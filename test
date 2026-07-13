@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robert & Abby - 婚禮邀請函</title>
+    <!-- 引入指定字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8870B9;
+            --secondary: #4DC6E2;
+            --secondary-light: rgba(77, 198, 226, 0.12);
+            --bg-light: #F9F8FC;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-card: 0 15px 35px rgba(136, 112, 185, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .en {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+        
+        /* 手機防斷行核心類別 */
+        .no-wrap {
+            white-space: nowrap;
+        }
+
+        /* 1. 毛玻璃導航列 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* 3. 全螢幕封面背景 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('https://i.postimg.cc/d34GHYLw/IMG-5515.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero-names {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-slogan {
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-date {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* 2. 藝術感倒數計時器 */
+        .countdown-section {
+            padding: 60px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        /* 淺藍色微光卡片 */
+        .countdown-card {
+            background: var(--secondary-light);
+            border: 1px solid rgba(77, 198, 226, 0.25);
+            border-radius: 16px;
+            padding: 15px 25px;
+            min-width: 130px;
+            flex: 1;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: transform 0.3s;
+        }
+
+        .countdown-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-num {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+        }
+
+        /* 優雅垂直細線 */
+        .countdown-divider {
+            width: 1px;
+            height: 35px;
+            background-color: rgba(136, 112, 185, 0.3);
+        }
+
+        .countdown-label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .countdown-label .zh {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .countdown-label .en-sub {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* 3. 垂直 V-Card 設計 */
+        .main-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .v-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: var(--shadow-card);
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(136, 112, 185, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .section-title p {
+            font-size: 1rem;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px dashed rgba(0,0,0,0.08);
+            padding-bottom: 25px;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 20px;
+            margin-top: 2px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .info-text h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .info-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* 8. 互動細節：摺疊式面板 Accordion */
+        .accordion {
+            margin-top: 20px;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: #FDFDFD;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: background 0.3s;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(77, 198, 226, 0.05);
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #FCFCFD;
+        }
+
+        .accordion-body {
+            padding: 20px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .transport-method {
+            margin-bottom: 15px;
+        }
+        
+        .transport-method:last-child {
+            margin-bottom: 0;
+        }
+        
+        .transport-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            display: inline-block;
+            border-left: 3px solid var(--secondary);
+            padding-left: 8px;
+        }
+
+        /* 4. 5. 6. 智能表單與雙語標籤 */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* 中英雙語標籤樣式 */
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-label span.label-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-left: 5px;
+            font-weight: 400;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 8px;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: #FAFAFA;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(77, 198, 226, 0.15);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        /* 智能隱藏邏輯初始隱藏 */
+        #conditional-fields {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+            opacity: 0;
+        }
+
+        #conditional-fields.show {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 25px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), #765ea3);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(136, 112, 185, 0.2);
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(136, 112, 185, 0.3);
+        }
+
+        /* 頁尾 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* RWD 響應式優化 */
+        @media (max-width: 768px) {
+            .hero-names { font-size: 2.6rem; }
+            .hero-slogan { font-size: 1.1rem; letter-spacing: 2px; }
+            .nav-links { display: none; } /* 手機端簡化導航 */
+            .v-card { padding: 35px 20px; }
+            .countdown-card { min-width: 110px; padding: 10px 15px; }
+            .countdown-num { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 毛玻璃導航列 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo en">R & A</a>
+            <ul class="nav-links">
+                <li><a href="#about">關於我們 ABOUT</a></li>
+                <li><a href="#details">婚禮詳情 DETAILS</a></li>
+                <li><a href="#rsvp">出席回函 RSVP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 3. 全螢幕封面背景 -->
+    <header class="hero">
+        <h1 class="hero-names"><span class="no-wrap">魯承漢 Robert</span> & <span class="no-wrap">耿玠瑋 Abby</span></h1>
+        <p class="hero-slogan">我們愛，因神先愛我們</p>
+        <div class="hero-date en">2026.12.05</div>
+    </header>
+
+    <!-- 2. 藝術感倒數計時器 -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <!-- 天 -->
+            <div class="countdown-card">
+                <div class="countdown-num" id="days">00</div>
+                <div class="countdown-divider"></div>
+                <div class="countdown-label">
+                    <span class="en-sub">Days</span>
+                    <span class="zh">天</span>
+                </div>
+            </div>
+            <!-- 時 -->
+            <div class="countdown-card">
+                <div class="countdown-num" id="hours">00</div>
+                <div class="countdown-divider"></div>
+                <div class="countdown-label">
+                    <span class="en-sub">Hours</span>
+                    <span class="zh">時</span>
+                </div>
+            </div>
+            <!-- 分 -->
+            <div class="countdown-card">
+                <div class="countdown-num" id="minutes">00</div>
+                <div class="countdown-divider"></div>
+                <div class="countdown-label">
+                    <span class="en-sub">Mins</span>
+                    <span class="zh">分</span>
+                </div>
+            </div>
+            <!-- 秒 -->
+            <div class="countdown-card">
+                <div class="countdown-num" id="seconds">00</div>
+                <div class="countdown-divider"></div>
+                <div class="countdown-label">
+                    <span class="en-sub">Secs</span>
+                    <span class="zh">秒</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        
+        <!-- 3. 垂直 V-Card 設計：關於我們 -->
+        <section id="about" class="v-card">
+            <div class="section-title">
+                <h2>關於我們</h2>
+                <p class="en">Our Story</p>
+            </div>
+            <div style="text-align: center; color: var(--text-dark); font-size: 1.05rem;">
+                <p>誠摯地邀請您，一同見證我們的愛情與誓言。</p>
+                <p>在上帝的引領與愛中，我們將攜手走向人生的下一個新篇章。</p>
+            </div>
+        </section>
+
+        <!-- 3. 垂直 V-Card 設計：婚禮詳情 -->
+        <section id="details" class="v-card">
+            <div class="section-title">
+                <h2>婚禮詳情</h2>
+                <p class="en">Wedding Details</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">📅</div>
+                    <div class="info-text">
+                        <h4>婚禮時間 TIME</h4>
+                        <p>2026 年 12 月 5 日 (星期六) 14:00</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h4>婚禮地點 LOCATION</h4>
+                        <p class="no-wrap" style="font-weight: 600; color: var(--text-dark);">中華基督教信義會信義堂</p>
+                        <p class="no-wrap" style="font-size: 0.9rem; margin-top: 4px;">新竹市東區振興里南大路430號</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. 互動細節：交通指引摺疊面板 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion()">
+                    <span>查看交通指引 DIRECTIONS</span>
+                    <span class="accordion-icon" id="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-content">
+                    <div class="accordion-body">
+                        <div class="transport-method">
+                            <span class="transport-title">自行前往</span>
+                            <p>導航至<span class="no-wrap">中華基督教信義會信義堂</span>（新竹市南大路430號）。周邊設有路邊停車格，或可利用鄰近的收費停車場停放車輛。</p>
+                        </div>
+                        <div class="transport-method">
+                            <span class="transport-title">大眾運輸</span>
+                            <p>搭乘台鐵至<span class="no-wrap">新竹火車站</span>下車，出站後轉乘市區公車或轉搭計程車，車程約 5-10 分鐘即可抵達。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 垂直 V-Card 設計：出席回函 -->
+        <section id="rsvp" class="v-card">
+            <div class="section-title">
+                <h2>出席回函</h2>
+                <p class="en">RSVP</p>
+            </div>
+
+            <!-- 5. 隱藏式 Iframe 提交技術 -->
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location='https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/viewform?usp=sf_link'; alert('回函已成功送出，謝謝您的祝福！'); }"></iframe>
+
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+                
+                <!-- Q1: 姓名 (entry.2115634338) -->
+                <div class="form-group">
+                    <label class="form-label">Q1. 您的姓名<span class="label-en">NAME</span></label>
+                    <input type="text" name="entry.2115634338" class="form-control" placeholder="請輸入您的真實姓名" required>
+                </div>
+
+                <!-- Q2: 關係 (entry.2038117092) -->
+                <div class="form-group">
+                    <label class="form-label">Q2. 您是哪方的親友呢？<span class="label-en">RELATIONSHIP</span></label>
+                    <select name="entry.2038117092" class="form-control" required>
+                        <option value="" disabled selected>請選擇您的身分</option>
+                        <option value="男方親戚">男方親戚</option>
+                        <option value="女方親友">女方親友</option>
+                        <option value="信義堂">信義堂</option>
+                        <option value="基督堂">基督堂</option>
+                    </select>
+                </div>
+
+                <!-- Q3: 是否出席 (entry.610958106) -->
+                <div class="form-group">
+                    <label class="form-label">Q3. 請問您當天是否能出席呢？<span class="label-en">ATTENDANCE</span></label>
+                    <select name="entry.610958106" id="attendance-select" class="form-control" onchange="handleAttendanceChange()" required>
+                        <option value="" disabled selected>請選擇出席狀態</option>
+                        <option value="期待出席，準時到場！">期待出席，準時到場！</option>
+                        <option value="不克前往，精神同在！">不克前往，精神同在！</option>
+                    </select>
+                </div>
+
+                <!-- 6. 智能表單邏輯控制區塊 -->
+                <div id="conditional-fields">
+                    <!-- Q4: 出席人數 (entry.1623138171) -->
+                    <div class="form-group">
+                        <label class="form-label">Q4. 請問包含您本人，共幾位出席？<span class="label-en">NUMBER OF GUESTS</span></label>
+                        <input type="number" id="field-q4" name="entry.1623138171" class="form-control" min="1" placeholder="例如：1">
+                    </div>
+
+                    <!-- Q5: 電子喜帖 Email (entry.1126822723) -->
+                    <div class="form-group">
+                        <label class="form-label">Q5. 若需要電子喜帖請輸入email<span class="label-en">EMAIL ADDRESS</span></label>
+                        <input type="email" id="field-q5" name="entry.1126822723" class="form-control" placeholder="example@gmail.com">
+                    </div>
+                </div>
+
+                <!-- Q6: 備註與祝福 (entry.135475866) -->
+                <div class="form-group">
+                    <label class="form-label">Q6. 給新人的祝福與備註<span class="label-en">BLESSINGS & NOTES</span></label>
+                    <textarea name="entry.135475866" class="form-control" rows="3" placeholder="留下想對我們說的話吧..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">送出回函 Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p class="en">&copy; 2026 Robert & Abby. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        var submitted = false;
+
+        // 2. 倒數計時器邏輯（精確倒數至 2026年12月5日 14:00）
+        const targetDate = new Date("December 5, 2026 14:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 8. 交通指引摺疊面板 (Accordion) 互動控制
+        function toggleAccordion() {
+            const content = document.getElementById("accordion-content");
+            const arrow = document.getElementById("accordion-arrow");
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                content.style.maxHeight = "0px";
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                arrow.style.transform = "rotate(180deg)";
+            }
+        }
+
+        // 6. 智能表單邏輯控制
+        function handleAttendanceChange() {
+            const selectElement = document.getElementById("attendance-select");
+            const conditionalBlock = document.getElementById("conditional-fields");
+            const q4 = document.getElementById("field-q4");
+            const q5 = document.getElementById("field-q5");
+
+            if (selectElement.value === "期待出席，準時到場！") {
+                conditionalBlock.classList.add("show");
+                q4.required = true;
+            } else {
+                conditionalBlock.classList.remove("show");
+                q4.required = false;
+                // 隱藏時清空內容，確保乾淨提交
+                q4.value = "";
+                q5.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
