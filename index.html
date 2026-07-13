@@ -531,31 +531,55 @@
             </select>
         </div>
 
-        <div id="attendance-conditional" class="conditional-group">
-            <div class="form-group">
-                <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
-                <input type="text" name="entry.1623138171" placeholder="例如：1">
-            </div>
-
-            <div class="form-group">
-                <label>若需要電子喜帖請輸入email<span class="lang-en">DIGITAL INVITATION</span></label>
-                <input type="text" name="entry.1126822723" placeholder="example@gmail.com">
-            </div>
-        </div>
-
         <div class="form-group">
             <label>溫馨祝福<span class="lang-en">MESSAGE TO NEWLYWEDS</span></label>
             <textarea name="entry.2038117092" placeholder="想對我們說的話..."></textarea>
         </div>
 
+        <div id="attendance-conditional" style="display: none; border-left: 2px solid var(--secondary, #8da399); padding-left: 15px; margin-bottom: 20px;">
+            <div class="form-group">
+                <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
+                <input type="text" id="field_guests" name="entry.1623138171" placeholder="例如：1">
+            </div>
+
+            <div class="form-group">
+                <label>若需要電子喜帖請輸入email<span class="lang-en">DIGITAL INVITATION</span></label>
+                <input type="text" id="field_email" name="entry.1126822723" placeholder="example@gmail.com">
+            </div>
+        </div>
+
         <button type="submit" class="btn-submit">傳送出席回函</button>
     </form>
 
-    <div id="success-wrapper">
+    <div id="success-wrapper" style="display:none;">
         <h3>表單已成功傳送！</h3>
         <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。❤️</p>
     </div>
 </section>
+
+<script>
+    const attendanceSelector = document.getElementById('attendanceSelector');
+    const conditionalGroup = document.getElementById('attendance-conditional');
+    const fieldGuests = document.getElementById('field_guests');
+    const fieldEmail = document.getElementById('field_email');
+
+    attendanceSelector.addEventListener('change', function() {
+        if (this.value === '❤️期待出席，準時到場！') {
+            conditionalGroup.style.display = 'block';
+            // 清空暫填值，讓使用者正常填寫
+            if(fieldGuests.value === '無') fieldGuests.value = '';
+            if(fieldEmail.value === '無') fieldEmail.value = '';
+            fieldGuests.required = true;
+        } else {
+            conditionalGroup.style.display = 'none';
+            // 💡 關鍵防錯：當不出席時，自動幫這兩個隱藏題填入「無」，欺騙 Google 表單繞過必填與跳題邏輯
+            fieldGuests.value = '無';
+            fieldEmail.value = '無';
+            fieldGuests.required = false;
+        }
+    });
+</script>
+
 
     <script>
         var isSubmitted = false;
