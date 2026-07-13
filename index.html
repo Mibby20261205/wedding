@@ -494,77 +494,68 @@
             </div>
         </section>
 
-        <!-- 出席回函 Card -->
-        <section id="rsvp" class="v-card">
-            <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
-            
-            <!-- 5. 隱藏式 Iframe 提交技術：提取 ID，輸入框純淨留空 -->
-            <iframe name="form_submit_iframe" id="form_submit_iframe" style="display:none;" onload="if(isSubmitted){processSuccess();}"></iframe>
-            
-           <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="form_submit_iframe" id="rsvpForm" onsubmit="isSubmitted=true;">
-               <!-- Q1. 姓名 (ID: entry.2115634338) -->
-                <div class="form-group">
-                    <label>真實姓名<span class="lang-en">NAME</span></label>
-                    <input type="text" name="entry.2115634338" required placeholder="">
-                </div>
+<section id="rsvp" class="v-card">
+    <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
+    
+    <iframe name="form_submit_iframe" id="form_submit_iframe" style="display:none;" onload="if(isSubmitted){processSuccess();}"></iframe>
+    
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="form_submit_iframe" id="rsvpForm" onsubmit="isSubmitted=true;">
+        
+        <div class="form-group">
+            <label>真實姓名<span class="lang-en">NAME</span></label>
+            <input type="text" name="entry.2115634338" required placeholder="">
+        </div>
 
-                <!-- Q2. 關係選單 (ID: entry.135475866) 下拉純中文 -->
-                <div class="form-group">
-                    <label>與新人的關係<span class="lang-en">RELATIONSHIP</span></label>
-                    <select name="entry.135475866" required>
-                        <option value="" disabled selected hidden>請選擇您的親友關係</option>
-                        <option value="男方親戚">男方親戚</option>
-                        <option value="男方朋友、同學">男方朋友、同學</option>
-                        <option value="男方同事">男方同事</option>
-                        <option value="女方親戚">女方親戚</option>
-                        <option value="女方朋友、同學">女方朋友、同學</option>
-                        <option value="女方同事">女方同事</option>
-                        <option value="新竹信義堂">新竹信義堂</option>
-                        <option value="鳳山基督堂">鳳山基督堂</option>
-                        <option value="其他">其他</option>
-                    </select>
-                </div>
+        <div class="form-group">
+            <label>與新人的關係<span class="lang-en">RELATIONSHIP</span></label>
+            <select name="entry.135475866" required>
+                <option value="" disabled selected hidden>請選擇您的親友關係</option>
+                <option value="男方親戚">男方親戚</option>
+                <option value="男方朋友、同學">男方朋友、同學</option>
+                <option value="男方同事">男方同事</option>
+                <option value="女方親戚">女方親戚</option>
+                <option value="女方朋友、同學">女方朋友、同學</option>
+                <option value="女方同事">女方同事</option>
+                <option value="新竹信義堂">新竹信義堂</option>
+                <option value="鳳山基督堂">鳳山基督堂</option>
+                <option value="其他">其他</option>
+            </select>
+        </div>
 
-                <!-- Q3. 是否出席 (ID: entry.610958106) -->
-                <div class="form-group">
-                    <label>請問您當天是否能出席呢？<span class="lang-en">ATTENDANCE</span></label>
-                    <select name="entry.610958106" id="attendanceSelector" required>
-                        <option value="" disabled selected hidden>請選擇出席狀態</option>
-                        <option value="❤️期待出席，準時到場！">❤️期待出席，準時到場！</option>
-                        <option value="🌸遺憾無法前往，祝福你們！">🌸遺憾無法前往，祝福你們！</option>
-                    </select>
-                </div>
+        <div class="form-group">
+            <label>請問您當天是否能出席呢？<span class="lang-en">ATTENDANCE</span></label>
+            <select name="entry.610958106" id="attendanceSelector" required>
+                <option value="" disabled selected hidden>請選擇出席狀態</option>
+                <option value="❤️期待出席，準時到場！">❤️期待出席，準時到場！</option>
+                <option value="🌸遺憾無法前往，祝福你們！">🌸遺憾無法前往，祝福你們！</option>
+            </select>
+        </div>
 
-                <!-- 6. 智能表單邏輯控制區塊 (來：Q4 與 Q5) -->
-                <div id="attendance-conditional" class="conditional-group">
-                    <!-- Q4. 出席人數 (ID: entry.1623138171) -->
-                    <div class="form-group">
-                        <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
-                    <textarea name="entry.1623138171" placeholder=""></textarea>
-                    </div>
-
-                    <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
-                    <div class="form-group">
-                        <label>若需要電子喜帖請輸入email<span class="lang-en">DIGITAL INVITATION</span></label>
-                    <textarea name="entry.1126822723" placeholder=""></textarea>
-                    </div>
-                </div>
-
-                <!-- 修正欄位：想對新人說的話 (ID: entry.2038117092) 絕無預填文字 -->
-                <div class="form-group">
-                    <label>溫馨祝福<span class="lang-en">MESSAGE TO NEWLYWEDS</span></label>
-                    <textarea name="entry.2038117092" placeholder=""></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">傳送出席回函</button>
-            </form>
-
-            <div id="success-wrapper">
-                <h3>表單已成功傳送！</h3>
-                <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。❤️</p>
+        <div id="attendance-conditional" class="conditional-group">
+            <div class="form-group">
+                <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
+                <input type="text" name="entry.1623138171" placeholder="例如：1">
             </div>
-        </section>
+
+            <div class="form-group">
+                <label>若需要電子喜帖請輸入email<span class="lang-en">DIGITAL INVITATION</span></label>
+                <input type="text" name="entry.1126822723" placeholder="example@gmail.com">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>溫馨祝福<span class="lang-en">MESSAGE TO NEWLYWEDS</span></label>
+            <textarea name="entry.2038117092" placeholder="想對我們說的話..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">傳送出席回函</button>
+    </form>
+
+    <div id="success-wrapper">
+        <h3>表單已成功傳送！</h3>
+        <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。❤️</p>
     </div>
+</section>
 
     <script>
         var isSubmitted = false;
