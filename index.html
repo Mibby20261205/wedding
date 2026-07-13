@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robert & Abby | 婚禮邀請函</title>
     
-    <!-- Google Fonts 引入指定質感字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -17,7 +16,7 @@
             --bg-cream: #fdfbf7;    /* 質感奶油白 */
             --text-dark: #3a3a3a;
             --text-muted: #7a7a7a;
-            --white-glow: rgba(255, 255, 255, 0.92);
+            --white-glow: rgba(255, 255, 255, 0.94);
             --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 8px rgba(0, 0, 0, 0.02);
             --vcard-shadow: 0 20px 40px rgba(212, 163, 115, 0.08);
         }
@@ -45,13 +44,13 @@
             font-style: italic;
         }
 
-        /* 7. 手機版防跑版專用樣式 */
+        /* 7. 手機版視覺優化：關鍵字地點、地址絕對防跑版斷行 */
         .no-wrap {
             white-space: nowrap !important;
             display: inline-block;
         }
 
-        /* 1. 毛玻璃固定導航列 */
+        /* 1. 固定式毛玻璃質感導航列 */
         nav {
             position: fixed;
             top: 0;
@@ -81,7 +80,7 @@
             color: var(--primary);
         }
 
-        /* 3. 首頁全螢幕封面背景 */
+        /* 3. 首頁全螢幕封面背景配置 */
         header {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), 
@@ -120,7 +119,7 @@
             margin-bottom: 45px;
         }
 
-        /* 2. 計時器視覺 (白色微光卡片與優雅細線) */
+        /* 2. 藝術感倒數計時器（白色微光卡片、垂直細線、圓角陰影） */
         .countdown-container {
             display: flex;
             justify-content: center;
@@ -169,7 +168,7 @@
             font-weight: 500;
         }
 
-        /* 3. 垂直 V-Card 設計配置 */
+        /* 3. 垂直 V-Card 內容配置 */
         .wrapper {
             max-width: 760px;
             margin: 0 auto;
@@ -203,7 +202,6 @@
             margin: 12px auto 0;
         }
 
-        /* 婚禮詳情排版 */
         .details-box {
             margin-bottom: 35px;
         }
@@ -225,7 +223,7 @@
             color: var(--text-dark);
         }
 
-        /* 8. 互動細節：交通摺疊面板 (Accordion) */
+        /* 8. 互動細節：交通指引摺疊式面板 (Accordion) */
         .accordion {
             margin-top: 40px;
             text-align: left;
@@ -298,7 +296,7 @@
             text-align: left;
         }
 
-        /* 6. 智能表單邏輯隱藏外框 */
+        /* 6. 智能表單動態區塊隱藏外框 */
         .conditional-group {
             display: none;
             border-left: 2px solid var(--secondary);
@@ -375,9 +373,10 @@
             background: rgba(141, 163, 153, 0.08);
             border-radius: 12px;
             margin-top: 20px;
+            text-align: center;
         }
 
-        /* 行動裝置視覺調整 */
+        /* 手機 RWD 微調 */
         @media (max-width: 600px) {
             header h1 { font-size: 2.6rem; }
             header h2 { font-size: 1.1rem; letter-spacing: 0.15em; }
@@ -390,20 +389,17 @@
 </head>
 <body>
 
-    <!-- 1. 毛玻璃質感固定導航列 -->
     <nav>
         <a href="#about">關於我們</a>
         <a href="#details">婚禮詳情</a>
         <a href="#rsvp">出席回函</a>
     </nav>
 
-    <!-- 3. 全螢幕封面背景 -->
     <header>
         <h1><span class="en">Robert & Abby</span></h1>
         <h2>魯承漢 & 耿玠瑋</h2>
         <p class="slogan">我們愛因神先愛我們</p>
         
-        <!-- 2. 藝術感倒數計時器視覺 -->
         <div class="countdown-container" id="countdown-box">
             <div class="time-card">
                 <div class="time-num" id="t-days">00</div>
@@ -428,10 +424,8 @@
         </div>
     </header>
 
-    <!-- 垂直資訊排版 V-Card 區域 -->
     <div class="wrapper">
         
-        <!-- 關於我們 Card -->
         <section id="about" class="v-card">
             <h3 class="section-title">關於我們 <span class="en">Our Story</span></h3>
             <p style="font-size: 1.05rem; color: #555; font-weight: 300;">
@@ -441,7 +435,6 @@
             </p>
         </section>
 
-        <!-- 婚禮詳情 Card -->
         <section id="details" class="v-card">
             <h3 class="section-title">婚禮詳情 <span class="en">Details</span></h3>
             
@@ -457,14 +450,12 @@
 
             <div class="details-box">
                 <span class="details-label">婚禮地點 VENUE</span>
-                <!-- 7. 使用 no-wrap 確保在手機介面上完全不破壞排版、不跑版 -->
                 <div class="details-content"><strong class="no-wrap">中華基督教信義會信義堂</strong></div>
                 <div class="details-content" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
                     <span class="no-wrap">新竹市東區</span><span class="no-wrap">振興里南大路430號</span>
                 </div>
             </div>
 
-            <!-- 8. 互動細節：交通指引摺疊面板 (Accordion) -->
             <div class="accordion">
                 <div class="accordion-title">— 交通指引 —</div>
                 
@@ -472,7 +463,7 @@
                     <div class="accordion-header">自行開車前往</div>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                            由國道1號於進到<span class="no-wrap">「新竹交流道」</span>後下交流道，朝新竹市區方向前進。沿著光復路行駛，隨後轉入食品路並右轉南大路，直行即可看見信義堂。教堂周邊備有路邊停車位及周邊收費停車場。
+                            由國道1號進入<span class="no-wrap">「新竹交流道」</span>後下交流道，往新竹市區方向行駛。沿著光復路前進，隨後轉入食品路並右轉南大路，直行即可看見信義堂。教堂周邊備有收費停車場與路邊停車格。
                         </div>
                     </div>
                 </div>
@@ -481,29 +472,25 @@
                     <div class="accordion-header">大眾運輸工具</div>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                            搭乘台鐵至<span class="no-wrap">「新竹火車站」</span>下車，出站後建議沿著南大路方向步行約 12-15 分鐘即可抵達；或可於火車站前轉乘新竹市區公車至鄰近站牌下車。
+                            搭乘台鐵至<span class="no-wrap">「新竹火車站」</span>下車，出站後建議沿南大路方向步行約 12-15 分鐘即可抵達；或可在火車站前轉乘新竹市區公車至鄰近南大路的站牌下車。
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 出幕回函 Card -->
         <section id="rsvp" class="v-card">
             <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
             
-            <!-- 5. 隱藏式 Iframe 提交技術 (網頁輸入框純淨留空，提取對應ID) -->
             <iframe name="form_submit_iframe" id="form_submit_iframe" style="display:none;" onload="if(isSubmitted){processSuccess();}"></iframe>
             
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="form_submit_iframe" id="rsvpForm" onsubmit="isSubmitted=true;">
                 
-                <!-- Q1. 姓名 (ID: entry.2115634338) -->
                 <div class="form-group">
                     <label>真實姓名<span class="lang-en">NAME</span></label>
                     <input type="text" name="entry.2115634338" required placeholder="">
                 </div>
 
-                <!-- Q2. 關係選單 (ID: entry.135475866) -->
                 <div class="form-group">
                     <label>與新人的關係<span class="lang-en">RELATIONSHIP</span></label>
                     <select name="entry.135475866" required>
@@ -515,7 +502,6 @@
                     </select>
                 </div>
 
-                <!-- Q3. 是否出席 (ID: entry.610958106) -->
                 <div class="form-group">
                     <label>請問您當天是否能出席呢？<span class="lang-en">ATTENDANCE</span></label>
                     <select name="entry.610958106" id="attendanceSelector" required>
@@ -525,9 +511,7 @@
                     </select>
                 </div>
 
-                <!-- 6. 智能表單邏輯控制區塊 (Q4 & Q5) -->
                 <div id="attendance-conditional" class="conditional-group">
-                    <!-- Q4. 出席人數 (ID: entry.1623138171) -->
                     <div class="form-group">
                         <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
                         <select name="entry.1623138171">
@@ -539,17 +523,15 @@
                         </select>
                     </div>
 
-                    <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
                     <div class="form-group">
                         <label>請問您需要我們寄送電子喜帖嗎？<span class="lang-en">DIGITAL INVITATION</span></label>
                         <select name="entry.1126822723">
-                            <option value="不要">不需要</option>
                             <option value="要">需要寄送</option>
+                            <option value="不要">不需要</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- 聯絡電話 (ID: entry.2038117092) -->
                 <div class="form-group">
                     <label>聯絡電話<span class="lang-en">PHONE</span></label>
                     <input type="text" name="entry.2038117092" required placeholder="">
@@ -560,7 +542,7 @@
 
             <div id="success-wrapper">
                 <h3>表單已成功傳送！</h3>
-                <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您一同見證美好恩典。❤️</p>
+                <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。❤️</p>
             </div>
         </section>
     </div>
@@ -568,7 +550,7 @@
     <script>
         var isSubmitted = false;
 
-        // 2. 藝術感倒數計時器邏輯（倒數至 2026年12月5日 14:00）
+        // 2. 倒數計時器邏輯（倒數至 2026年12月5日 14:00）
         const weddingTimestamp = new Date("December 5, 2026 14:00:00").getTime();
 
         function refreshTimer() {
@@ -594,7 +576,7 @@
         const timerInterval = setInterval(refreshTimer, 1000);
         refreshTimer();
 
-        // 8. 互動細節：交通指引 Accordion 摺疊邏輯
+        // 8. 互動細節：交通指引 Accordion 摺疊與展開高度控制
         document.querySelectorAll('.accordion-header').forEach(el => {
             el.addEventListener('click', () => {
                 const item = el.parentElement;
@@ -609,7 +591,7 @@
             });
         });
 
-        // 6. 智能表單邏輯控制 (選擇「期待出席，準時到場！」才動態展示 Q4 & Q5)
+        // 6. 智能表單邏輯控制 (選擇「期待出席，準時到場！」才展開 Q4 & Q5)
         const attendanceSelector = document.getElementById('attendanceSelector');
         const conditionalGroup = document.getElementById('attendance-conditional');
 
