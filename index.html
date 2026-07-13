@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robert & Abby | 婚禮邀請函</title>
-    <!-- 引入高質感字體 -->
+    
+    <!-- Google Fonts 引入指定質感字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #d4a373; /* 暖陽金 */
-            --secondary: #8da399; /* 莫蘭迪綠 */
-            --bg-light: #fdfbf7;
-            --text-dark: #4a4a4a;
-            --text-light: #7a7a7a;
-            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --shadow-card: 0 15px 35px rgba(212, 163, 115, 0.1);
+            --primary: #d4a373;     /* Morandi 暖陽金 */
+            --secondary: #8da399;   /* Morandi 莫蘭迪綠 */
+            --bg-cream: #fdfbf7;    /* 質感奶油白 */
+            --text-dark: #3a3a3a;
+            --text-muted: #7a7a7a;
+            --white-glow: rgba(255, 255, 255, 0.92);
+            --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 8px rgba(0, 0, 0, 0.02);
+            --vcard-shadow: 0 20px 40px rgba(212, 163, 115, 0.08);
         }
 
         * {
@@ -26,12 +28,16 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Noto Serif TC', serif;
-            background-color: var(--bg-light);
+            background-color: var(--bg-cream);
             color: var(--text-dark);
             line-height: 1.8;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
         }
 
         .en {
@@ -39,12 +45,13 @@
             font-style: italic;
         }
 
-        /* 手機防斷行專用 */
+        /* 7. 手機版防跑版專用樣式 */
         .no-wrap {
-            white-space: nowrap;
+            white-space: nowrap !important;
+            display: inline-block;
         }
 
-        /* 1. 毛玻璃導覽列 */
+        /* 1. 毛玻璃固定導航列 */
         nav {
             position: fixed;
             top: 0;
@@ -52,31 +59,33 @@
             width: 100%;
             z-index: 1000;
             background: rgba(253, 251, 247, 0.75);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 163, 115, 0.15);
             display: flex;
             justify-content: center;
-            padding: 15px 0;
+            padding: 18px 0;
         }
 
         nav a {
             color: var(--text-dark);
             text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.95rem;
+            margin: 0 18px;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
             color: var(--primary);
         }
 
-        /* 3. 全螢幕封面 */
+        /* 3. 首頁全螢幕封面背景 */
         header {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)), url('https://i.postimg.cc/d34GHYLw/IMG-5515.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), 
+                        url('https://i.postimg.cc/d34GHYLw/IMG-5515.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -88,335 +97,382 @@
 
         header h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 3.8rem;
+            font-weight: 300;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
         }
 
         header h2 {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 300;
-            margin-bottom: 30px;
-            letter-spacing: 0.2em;
+            margin-bottom: 35px;
+            letter-spacing: 0.25em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         header p.slogan {
-            font-size: 1.1rem;
-            border-top: 1px solid rgba(255,255,255,0.6);
-            border-bottom: 1px solid rgba(255,255,255,0.6);
-            padding: 10px 20px;
-            letter-spacing: 0.3em;
+            font-size: 1.05rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 12px 24px;
+            letter-spacing: 0.35em;
+            margin-bottom: 45px;
         }
 
-        /* 容器與 V-Card 設計 */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .v-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 50px 40px;
-            box-shadow: var(--shadow-card);
-            margin-bottom: 50px;
-            text-align: center;
-            border: 1px solid rgba(214, 163, 115, 0.15);
-        }
-
-        .section-title {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 1px;
-            background: var(--secondary);
-            margin: 15px auto 0;
-        }
-
-        /* 2. 藝術感計時器視覺 */
+        /* 2. 計時器視覺 (白色微光卡片與優雅細線) */
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 16px;
             flex-wrap: wrap;
+            max-width: 600px;
         }
 
         .time-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--white-glow);
             border-radius: 12px;
-            padding: 15px 20px;
-            box-shadow: var(--shadow-soft);
+            padding: 14px 18px;
+            box-shadow: var(--soft-shadow);
             display: flex;
             align-items: center;
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            min-width: 120px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            min-width: 115px;
             justify-content: center;
         }
 
         .time-num {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1;
-            padding-right: 15px;
+            padding-right: 14px;
+            min-width: 50px;
+            text-align: right;
         }
 
         .time-divider {
             width: 1px;
-            height: 30px;
-            background-color: rgba(0, 0, 0, 0.1);
+            height: 28px;
+            background-color: rgba(212, 163, 115, 0.3);
         }
 
         .time-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding-left: 14px;
+            text-align: left;
+            line-height: 1.3;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        /* 3. 垂直 V-Card 設計配置 */
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
+        }
+
+        .v-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 60px 45px;
+            box-shadow: var(--vcard-shadow);
+            margin-bottom: 50px;
+            text-align: center;
+            border: 1px solid rgba(212, 163, 115, 0.12);
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            letter-spacing: 0.15em;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 1px;
+            background: var(--secondary);
+            margin: 12px auto 0;
+        }
+
+        /* 婚禮詳情排版 */
+        .details-box {
+            margin-bottom: 35px;
+        }
+
+        .details-label {
+            display: inline-block;
+            background: #f5ede2;
+            color: #b58353;
             font-size: 0.8rem;
-            color: var(--text-light);
-            padding-left: 15px;
+            padding: 4px 16px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+            font-weight: 500;
             letter-spacing: 0.1em;
         }
 
-        /* 婚禮詳情樣式 */
-        .info-item {
-            margin-bottom: 25px;
-        }
-        .info-item h4 {
-            color: var(--secondary);
+        .details-content {
             font-size: 1.1rem;
-            margin-bottom: 50px0px;
-        }
-        .info-tag {
-            display: inline-block;
-            background: #f4ece1;
-            color: var(--primary);
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+            color: var(--text-dark);
         }
 
-        /* 7. 互動細節：交通摺疊面板 (Accordion) */
+        /* 8. 互動細節：交通摺疊面板 (Accordion) */
+        .accordion {
+            margin-top: 40px;
+            text-align: left;
+            border-top: 1px dashed rgba(212, 163, 115, 0.3);
+            padding-top: 35px;
+        }
+
+        .accordion-title {
+            font-size: 1rem;
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+        }
+
         .accordion-item {
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin-bottom: 12px;
             background: #fff;
+            overflow: hidden;
         }
 
         .accordion-header {
-            background: #fff;
-            padding: 15px 20px;
+            padding: 16px 20px;
+            background: #faf8f5;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 0.95rem;
             font-weight: 500;
+            color: var(--text-dark);
             transition: background 0.3s;
         }
 
         .accordion-header:hover {
-            background: rgba(212, 163, 115, 0.05);
+            background: #f4f0ea;
         }
 
         .accordion-header::after {
-            content: '＋';
+            content: '↓';
+            font-family: serif;
             color: var(--primary);
-            font-size: 1.2rem;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
         .accordion-item.active .accordion-header::after {
-            content: '－';
+            transform: rotate(180deg);
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background: var(--bg-light);
-            text-align: left;
+            background: #ffffff;
         }
 
         .accordion-body {
             padding: 20px;
-            font-size: 0.95rem;
-            color: var(--text-dark);
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid rgba(0, 0, 0, 0.02);
+            line-height: 1.7;
         }
 
-        /* 4. 中英雙語表單與 8. 智能表單邏輯 */
+        /* 4. 中英雙語欄位標籤 */
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             text-align: left;
         }
 
-        .form-group.hidden {
+        /* 6. 智能表單邏輯隱藏外框 */
+        .conditional-group {
             display: none;
+            border-left: 2px solid var(--secondary);
+            padding-left: 15px;
+            margin-left: 2px;
+        }
+
+        .conditional-group.show {
+            display: block;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
             font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
 
-        label span.en-label {
+        label .lang-en {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 0.85rem;
-            margin-left: 5px;
+            margin-left: 6px;
+            font-weight: 400;
         }
 
         input[type="text"], select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0, 0, 0, 0.15);
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
             border-radius: 8px;
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-dark);
             background-color: #fff;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         input[type="text"]:focus, select:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
         }
 
         button.btn-submit {
             background: var(--primary);
-            color: white;
+            color: #fff;
             border: none;
-            padding: 15px 40px;
+            padding: 16px;
             font-size: 1rem;
             font-family: inherit;
+            font-weight: 500;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
-            transition: background 0.3s, transform 0.2s;
             width: 100%;
             letter-spacing: 0.2em;
+            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.25);
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 15px;
         }
 
         button.btn-submit:hover {
             background: #c59262;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        #success-message {
+        #success-wrapper {
             display: none;
             color: var(--secondary);
             font-weight: 500;
+            padding: 30px 20px;
+            background: rgba(141, 163, 153, 0.08);
+            border-radius: 12px;
             margin-top: 20px;
-            padding: 15px;
-            background: rgba(141, 163, 153, 0.1);
-            border-radius: 8px;
         }
 
-        /* 手機版優化過渡效果 */
+        /* 行動裝置視覺調整 */
         @media (max-width: 600px) {
-            header h1 { font-size: 2.5rem; }
-            .v-card { padding: 30px 20px; }
-            .time-card { min-width: 45%; }
+            header h1 { font-size: 2.6rem; }
+            header h2 { font-size: 1.1rem; letter-spacing: 0.15em; }
+            header p.slogan { font-size: 0.95rem; letter-spacing: 0.2em; }
+            .v-card { padding: 45px 22px; }
+            .time-card { min-width: 46%; }
             nav a { margin: 0 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. 毛玻璃導覽列 -->
+    <!-- 1. 毛玻璃質感固定導航列 -->
     <nav>
         <a href="#about">關於我們</a>
         <a href="#details">婚禮詳情</a>
         <a href="#rsvp">出席回函</a>
     </nav>
 
-    <!-- 3. 全螢幕封面 -->
+    <!-- 3. 全螢幕封面背景 -->
     <header>
         <h1><span class="en">Robert & Abby</span></h1>
         <h2>魯承漢 & 耿玠瑋</h2>
         <p class="slogan">我們愛因神先愛我們</p>
         
-        <!-- 2. 計時器視覺 -->
-        <div class="countdown-container" id="countdown">
+        <!-- 2. 藝術感倒數計時器視覺 -->
+        <div class="countdown-container" id="countdown-box">
             <div class="time-card">
-                <div class="time-num" id="days">00</div>
+                <div class="time-num" id="t-days">00</div>
                 <div class="time-divider"></div>
                 <div class="time-label">DAYS<br>天</div>
             </div>
             <div class="time-card">
-                <div class="time-num" id="hours">00</div>
+                <div class="time-num" id="t-hours">00</div>
                 <div class="time-divider"></div>
                 <div class="time-label">HRS<br>時</div>
             </div>
             <div class="time-card">
-                <div class="time-num" id="minutes">00</div>
+                <div class="time-num" id="t-minutes">00</div>
                 <div class="time-divider"></div>
                 <div class="time-label">MINS<br>分</div>
             </div>
             <div class="time-card">
-                <div class="time-num" id="seconds">00</div>
+                <div class="time-num" id="t-seconds">00</div>
                 <div class="time-divider"></div>
                 <div class="time-label">SECS<br>秒</div>
             </div>
         </div>
     </header>
 
-    <div class="container">
+    <!-- 垂直資訊排版 V-Card 區域 -->
+    <div class="wrapper">
         
-        <!-- 關於我們區塊 -->
+        <!-- 關於我們 Card -->
         <section id="about" class="v-card">
-            <h3 class="section-title">關於我們 <span class="en">About Us</span></h3>
-            <p>誠摯邀請您，與我們一同見證這份恩典與承諾。<br>在神的愛裡，我們攜手邁向人生的全新篇章。</p>
+            <h3 class="section-title">關於我們 <span class="en">Our Story</span></h3>
+            <p style="font-size: 1.05rem; color: #555; font-weight: 300;">
+                誠摯邀請您前來參與我們的婚禮，<br>
+                在眾人與神的見證與祝福中，一同分享這份喜悅，<br>
+                攜手邁向恩典的新一頁。
+            </p>
         </section>
 
-        <!-- 婚禮詳情區塊 -->
+        <!-- 婚禮詳情 Card -->
         <section id="details" class="v-card">
-            <h3 class="section-title">婚禮詳情 <span class="en">Wedding Details</span></h3>
+            <h3 class="section-title">婚禮詳情 <span class="en">Details</span></h3>
             
-            <div class="info-item">
-                <span class="info-tag">日期 DATE</span>
-                <p style="font-size: 1.2rem; font-weight: 500;">2026 年 12 月 5 日 (六)</p>
+            <div class="details-box">
+                <span class="details-label">婚禮日期 DATE</span>
+                <div class="details-content"><strong>2026 年 12 月 5 日 (星期六)</strong></div>
             </div>
 
-            <div class="info-item">
-                <span class="info-tag">時間 TIME</span>
-                <p>下午 14:00 證婚儀式 / 隨後舉行婚禮午宴</p>
+            <div class="details-box">
+                <span class="details-label">婚禮時間 TIME</span>
+                <div class="details-content">下午 14:00 準時開始</div>
             </div>
 
-            <div class="info-item">
-                <span class="info-tag">地點 VENUE</span>
-                <!-- 6. 使用 no-wrap 確保手機不跑版 -->
-                <p><strong class="no-wrap">台北恩典景觀莊園</strong></p>
-                <p class="no-wrap" style="color: var(--text-light); font-size: 0.9rem;">台北市士林區幸福路888號</p>
+            <div class="details-box">
+                <span class="details-label">婚禮地點 VENUE</span>
+                <!-- 7. 使用 no-wrap 確保在手機介面上完全不破壞排版、不跑版 -->
+                <div class="details-content"><strong class="no-wrap">中華基督教信義會信義堂</strong></div>
+                <div class="details-content" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+                    <span class="no-wrap">新竹市東區</span><span class="no-wrap">振興里南大路430號</span>
+                </div>
             </div>
 
-            <div class="info-item">
-                <span class="info-tag">衣著守則 DRESS CODE</span>
-                <p>莫蘭迪暖色系、大地色系、優雅正裝</p>
-            </div>
-
-            <!-- 7. 交通指引摺疊面板 (Accordion) -->
-            <div style="margin-top: 40px; text-align: left;">
-                <h4 style="margin-bottom: 15px; text-align: center; color: var(--secondary);">— 交通指引 —</h4>
+            <!-- 8. 互動細節：交通指引摺疊面板 (Accordion) -->
+            <div class="accordion">
+                <div class="accordion-title">— 交通指引 —</div>
                 
                 <div class="accordion-item">
                     <div class="accordion-header">自行開車前往</div>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                            國道1號於台北交流道下，往士林方向行駛，至幸福路右轉即可到達。莊園內備有專屬免費停車場。
+                            由國道1號於進到<span class="no-wrap">「新竹交流道」</span>後下交流道，朝新竹市區方向前進。沿著光復路行駛，隨後轉入食品路並右轉南大路，直行即可看見信義堂。教堂周邊備有路邊停車位及周邊收費停車場。
                         </div>
                     </div>
                 </div>
@@ -425,54 +481,55 @@
                     <div class="accordion-header">大眾運輸工具</div>
                     <div class="accordion-content">
                         <div class="accordion-body">
-                            搭乘捷運淡水信義線至<span class="no-wrap">「士林站」</span>2號出口，轉乘公車 260、紅30 至<span class="no-wrap">「幸福莊園站」</span>下車，步行約 3 分鐘即可抵達。
+                            搭乘台鐵至<span class="no-wrap">「新竹火車站」</span>下車，出站後建議沿著南大路方向步行約 12-15 分鐘即可抵達；或可於火車站前轉乘新竹市區公車至鄰近站牌下車。
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 出席回函區塊 -->
+        <!-- 出幕回函 Card -->
         <section id="rsvp" class="v-card">
             <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
             
-            <!-- 5. 隱藏式 Iframe 提交技術 -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccess();}"></iframe>
+            <!-- 5. 隱藏式 Iframe 提交技術 (網頁輸入框純淨留空，提取對應ID) -->
+            <iframe name="form_submit_iframe" id="form_submit_iframe" style="display:none;" onload="if(isSubmitted){processSuccess();}"></iframe>
             
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="hidden_iframe" id="weddingForm" onsubmit="submitted=true;">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="form_submit_iframe" id="rsvpForm" onsubmit="isSubmitted=true;">
                 
-                <!-- 姓名 (ID: entry.2115634338) -->
+                <!-- Q1. 姓名 (ID: entry.2115634338) -->
                 <div class="form-group">
-                    <label>真實姓名<span class="en-label">NAME</span></label>
+                    <label>真實姓名<span class="lang-en">NAME</span></label>
                     <input type="text" name="entry.2115634338" required placeholder="">
                 </div>
 
-                <!-- 與新人的關係 (ID: entry.135475866) -->
+                <!-- Q2. 關係選單 (ID: entry.135475866) -->
                 <div class="form-group">
-                    <label>與新人的關係<span class="en-label">RELATIONSHIP</span></label>
+                    <label>與新人的關係<span class="lang-en">RELATIONSHIP</span></label>
                     <select name="entry.135475866" required>
-                        <option value="" disabled selected hidden>請選擇關係</option>
+                        <option value="" disabled selected hidden>請選擇您的親友關係</option>
                         <option value="男方親友">男方親友</option>
                         <option value="女方親友">女方親友</option>
-                        <option value="共同好友">共同好友</option>
+                        <option value="信義堂">信義堂</option>
+                        <option value="基督堂">基督堂</option>
                     </select>
                 </div>
 
-                <!-- 是否出席 (ID: entry.610958106) -->
+                <!-- Q3. 是否出席 (ID: entry.610958106) -->
                 <div class="form-group">
-                    <label>請問您當天是否能出席呢？<span class="en-label">ATTENDANCE</span></label>
-                    <select name="entry.610958106" id="attendanceSelect" required>
+                    <label>請問您當天是否能出席呢？<span class="lang-en">ATTENDANCE</span></label>
+                    <select name="entry.610958106" id="attendanceSelector" required>
                         <option value="" disabled selected hidden>請選擇出席狀態</option>
                         <option value="❤️期待出席，準時到場！">❤️期待出席，準時到場！</option>
                         <option value="💔不克前往，祝福滿滿！">💔不克前往，祝福滿滿！</option>
                     </select>
                 </div>
 
-                <!-- 8. 智能表單邏輯控制區塊：只有出席才顯示 -->
-                <div id="conditional-fields" class="hidden">
-                    <!-- 出席人數 (ID: entry.1623138171) -->
+                <!-- 6. 智能表單邏輯控制區塊 (Q4 & Q5) -->
+                <div id="attendance-conditional" class="conditional-group">
+                    <!-- Q4. 出席人數 (ID: entry.1623138171) -->
                     <div class="form-group">
-                        <label>包含您，總共有幾位出席呢？<span class="en-label">NUMBER OF GUESTS</span></label>
+                        <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
                         <select name="entry.1623138171">
                             <option value="1">1 位</option>
                             <option value="2">2 位</option>
@@ -482,101 +539,92 @@
                         </select>
                     </div>
 
-                    <!-- 需不需要準備蔬食 (ID: entry.1126822723) -->
+                    <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
                     <div class="form-group">
-                        <label>請問需要為您準備蔬食/素食嗎？<span class="en-label">DIETARY REQUIREMENTS</span></label>
+                        <label>請問您需要我們寄送電子喜帖嗎？<span class="lang-en">DIGITAL INVITATION</span></label>
                         <select name="entry.1126822723">
                             <option value="不要">不需要</option>
-                            <option value="要">需要準備</option>
+                            <option value="要">需要寄送</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- 聯絡電話 (ID: entry.2038117092) -->
                 <div class="form-group">
-                    <label>聯絡電話<span class="en-label">PHONE</span></label>
+                    <label>聯絡電話<span class="lang-en">PHONE</span></label>
                     <input type="text" name="entry.2038117092" required placeholder="">
                 </div>
 
-                <!-- 溫馨祝福 (ID: entry.674269642) -->
-                <div class="form-group">
-                    <label>給新人的溫馨祝福<span class="en-label">BLESSINGS</span></label>
-                    <input type="text" name="entry.674269642" placeholder="">
-                </div>
-
-                <button type="submit" class="btn-submit">遞交回函</button>
+                <button type="submit" class="btn-submit">傳送出席回函</button>
             </form>
 
-            <div id="success-message">
-                感謝您的回覆！我們期待在婚禮當天與您相見。❤️
+            <div id="success-wrapper">
+                <h3>表單已成功傳送！</h3>
+                <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您一同見證美好恩典。❤️</p>
             </div>
         </section>
     </div>
 
     <script>
-        var submitted = false;
+        var isSubmitted = false;
 
-        // 2. 倒數計時器邏輯 (設定目標至 2026年12月5日 14:00)
-        const targetDate = new Date("December 5, 2026 14:00:00").getTime();
+        // 2. 藝術感倒數計時器邏輯（倒數至 2026年12月5日 14:00）
+        const weddingTimestamp = new Date("December 5, 2026 14:00:00").getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+        function refreshTimer() {
+            const currentMoment = new Date().getTime();
+            const timeDiff = weddingTimestamp - currentMoment;
 
-            if (difference < 0) {
-                document.getElementById("countdown").innerHTML = "<p style='font-size:1.2rem; padding:15px;'>婚禮已幸福揭幕 ❤️</p>";
-                clearInterval(countdownInterval);
+            if (timeDiff < 0) {
+                document.getElementById("countdown-box").innerHTML = "<p style='font-size:1.1rem; color:#fff; letter-spacing:0.1em; padding:10px;'>婚禮已幸福揭幕 🤍</p>";
+                clearInterval(timerInterval);
                 return;
             }
 
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            document.getElementById("t-days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("t-hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("t-minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("t-seconds").innerText = seconds.toString().padStart(2, '0');
         }
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown();
+        const timerInterval = setInterval(refreshTimer, 1000);
+        refreshTimer();
 
-        // 7. 互動細節：摺疊面板 (Accordion) 點擊事件
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                const content = header.nextElementSibling;
+        // 8. 互動細節：交通指引 Accordion 摺疊邏輯
+        document.querySelectorAll('.accordion-header').forEach(el => {
+            el.addEventListener('click', () => {
+                const item = el.parentElement;
+                const panel = el.nextElementSibling;
                 
                 item.classList.toggle('active');
-                
                 if (item.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    panel.style.maxHeight = panel.scrollHeight + "px";
                 } else {
-                    content.style.maxHeight = "0";
+                    panel.style.maxHeight = "0";
                 }
             });
         });
 
-        // 8. 智能表單邏輯 (出席才顯示特定欄位)
-        const attendanceSelect = document.getElementById('attendanceSelect');
-        const conditionalFields = document.getElementById('conditional-fields');
-        const requiredInputs = conditionalFields.querySelectorAll('select');
+        // 6. 智能表單邏輯控制 (選擇「期待出席，準時到場！」才動態展示 Q4 & Q5)
+        const attendanceSelector = document.getElementById('attendanceSelector');
+        const conditionalGroup = document.getElementById('attendance-conditional');
 
-        attendanceSelect.addEventListener('change', function() {
+        attendanceSelector.addEventListener('change', function() {
             if (this.value === '❤️期待出席，準時到場！') {
-                conditionalFields.classList.remove('hidden');
-                requiredInputs.forEach(input => input.setAttribute('required', 'true'));
+                conditionalGroup.classList.add('show');
             } else {
-                conditionalFields.classList.add('hidden');
-                requiredInputs.forEach(input => input.removeAttribute('required'));
+                conditionalGroup.classList.remove('show');
             }
         });
 
-        // 表單提交後的成功提示
-        function showSuccess() {
-            document.getElementById('weddingForm').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
+        // 5. Iframe 後台成功提交處理
+        function processSuccess() {
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('success-wrapper').style.display = 'block';
         }
     </script>
 </body>
