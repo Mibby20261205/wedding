@@ -631,17 +631,13 @@
 
         // 5. Iframe 後台提交成功處理
         function processSuccess() {
-            document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('success-wrapper').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('success-wrapper').style.display = 'block';
+            }, 1000);
         }
     </script>
 
- function processSuccess() {
-    setTimeout(() => {
-        document.getElementById("rsvpForm").style.display = "none";
-        document.getElementById("success-wrapper").style.display = "block";
-    }, 1000);
-}
     
 </body>
 </html>
