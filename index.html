@@ -22,6 +22,23 @@
             --vcard-shadow: 0 20px 40px rgba(212, 163, 115, 0.08);
         }
 
+    /* Google 地圖容器樣式 */
+    .map-container {
+        margin-top: 30px;
+        width: 100%;
+        height: 350px; /* 地圖高度，可自行調整 */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(212, 163, 115, 0.15);
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -468,6 +485,16 @@
                 <div class="details-content" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
                     <span class="no-wrap">新竹市東區</span><span class="no-wrap">振興里南大路430號</span>
                 </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.3789957790757!2d120.96781297621434!3d24.799587447937446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346836100693a11b%3A0xe5a3c0044cf8b0e5!2z576p576p576p5Z-65p2j5b6S5L-h576p5pyD5L-h576p5aCC!5e0!3m2!1szh-TW!2stw!4v1710000000000!5m2!1szh-TW!2stw" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+                
             </div>
 
             <!-- 8. 交通指引摺疊面板 (Accordion) -->
