@@ -615,6 +615,12 @@
 
         // 8. 交通指引 Accordion 控制
         document.querySelectorAll('.accordion-header').forEach(el => {
+          
+            .accordion-header:hover,
+            .accordion-item.active .accordion-header {
+                color: var(--primary);
+            }
+            
             el.addEventListener('click', () => {
                 const item = el.parentElement;
                 const panel = el.nextElementSibling;
