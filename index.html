@@ -111,21 +111,24 @@
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        header p
-
-        /* 經文外容器，用來微調與計時器的間距 */
-        .slogan-container {
-            margin-bottom: 35px; /* 與下方計時器的距離 */
+        header p.slogan {
+            font-size: 1.05rem;
             border-top: 1px solid rgba(255, 255, 255, 0.5);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             padding: 12px 24px;
             letter-spacing: 0.35em;
-            margin-bottom: 20px;
+            margin-bottom: 45px;
+        }
+
+        /* 經文外容器，用來微調與計時器的間距 */
+        .slogan-container {
+            margin-bottom: 35px; /* 與下方計時器的距離 */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* 確保在輪播照片上清晰可讀 */
         }
 
         /* 第一行主要經文 */
         .slogan {
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
             font-size: 1.1rem;
             letter-spacing: 0.15em;
             margin-bottom: 1px; /* 縮小與下方小字的距離 */
@@ -134,6 +137,7 @@
 
         /* 第二行小字出處 */
         .slogan-sub {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             font-size: 0.6rem; /* 字體縮小 */
             letter-spacing: 0.1em;
             opacity: 0.8; /* 微微透明度，營造層次感 */
