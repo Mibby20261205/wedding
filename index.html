@@ -612,7 +612,17 @@
 
     <script>
         var isSubmitted = false;
+        const rsvpForm = document.getElementById('rsvpForm');
+        const submitBtn = rsvpForm.querySelector('.btn-submit');
 
+        // 監聽表單提交事件，點擊後按鈕變更狀態
+        rsvpForm.addEventListener('submit', function() {
+        isSubmitted = true;
+        submitBtn.innerText = "傳送中...";
+        submitBtn.style.opacity = "0.7";
+        submitBtn.style.pointerEvents = "none"; // 禁用點擊
+        });
+        
         // 成功發送後的處理邏輯
         function processSuccess() {
             if (isSubmitted) {
