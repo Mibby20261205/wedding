@@ -104,7 +104,7 @@
         }
 
         header h2 {
-            font-size: 1.5rem;
+            font-size: 2.0rem;
             font-weight: 300;
             margin-bottom: 80px;
             letter-spacing: 0.25em;
@@ -116,7 +116,7 @@
 
         /* 經文外容器，用來微調與計時器的間距 */
         .slogan-container {
-            margin-bottom: 85px; /* 與下方計時器的距離 */
+            margin-bottom: 100px; /* 與下方計時器的距離 */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* 確保在輪播照片上清晰可讀 */
         }
 
@@ -137,7 +137,20 @@
             opacity: 0.8; /* 微微透明度，營造層次感 */
             font-weight: 300;
             margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* 文字與左右線條的間距 */
         }
+        /* 左右兩側的線條 */
+            .slogan-sub::before,
+            .slogan-sub::after {
+                content: "";
+                height: 1px; /* 線條厚度 */
+                width: 30px; /* 線條長度，可依喜好調整，例如 40px */
+                background-color: rgba(255, 255, 255, 0.6); /* 線條顏色（半透明白，非常優雅） */
+                display: inline-block;
+            }
 
 
       
