@@ -500,18 +500,23 @@
             <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
             
             <!-- 5. 隱藏式 Iframe 提交技術：提取 ID，輸入框純淨留空 -->
-            <iframe name="form_submit_iframe" id="form_submit_iframe" style="display:none;" onload="if(isSubmitted){processSuccess();}"></iframe>
+            <iframe 
+                name="form_submit_iframe" 
+                id="form_submit_iframe" 
+                style="display:none;" 
+                onload="if(isSubmitted){processSuccess();}">    
+            </iframe>
             
            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" target="form_submit_iframe" id="rsvpForm" onsubmit="isSubmitted=true;">
                <!-- Q1. 姓名 (ID: entry.2115634338) -->
                 <div class="form-group">
-                    <label>真實姓名<span class="lang-en">NAME</span></label>
+                    <label>您的姓名<span class="lang-en">NAME</span></label>
                     <input type="text" name="entry.2115634338" required placeholder="">
                 </div>
 
                 <!-- Q2. 關係選單 (ID: entry.135475866) 下拉純中文 -->
                 <div class="form-group">
-                    <label>與新人的關係<span class="lang-en">RELATIONSHIP</span></label>
+                    <label>您是哪一方的親友呢？<span class="lang-en">RELATIONSHIP</span></label>
                     <select name="entry.135475866" required>
                         <option value="" disabled selected hidden>請選擇您的親友關係</option>
                         <option value="男方親戚">男方親戚</option>
@@ -546,7 +551,7 @@
 
                     <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
                     <div class="form-group">
-                        <label>若需要電子喜帖請輸入email<span class="lang-en">DIGITAL INVITATION</span></label>
+                        <label>若需要電子喜帖請留下email<span class="lang-en">DIGITAL INVITATION</span></label>
                     <textarea name="entry.1126822723" placeholder=""></textarea>
                     </div>
                 </div>
@@ -631,9 +636,12 @@
         }
     </script>
 
-documet.getElementById("rsvpForm").addEventListener("submit", function(){
-    console.log("Form sumitted");
-});
+        function processSuccess(){
+            setTimeout(() => {
+                document.getElementById(""rsvpForm).style.display = "none";
+                document.getElementById("success-wrapper").style.display = "block";
+            }, 1000);
+        }
     
 </body>
 </html>
