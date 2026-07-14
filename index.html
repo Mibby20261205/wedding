@@ -374,10 +374,10 @@
 
         #success-wrapper {
             display: none;
-            color: var(--secondary);
+            color: #61b390; /* 這裡修正為優雅的綠色或搭配副色 */
             font-weight: 500;
             padding: 30px 20px;
-            background: rgba(141, 163, 153, 0.08);
+            background: rgba(97, 179, 144, 0.08);
             border-radius: 12px;
             margin-top: 20px;
             text-align: center;
@@ -499,22 +499,23 @@
         <section id="rsvp" class="v-card">
             <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
             
-            <!-- 5. 隱藏式 Iframe 提交技術：提取 ID，輸入框純淨留空 -->
+            <!-- 5. 隱藏式 Iframe 提交技術：確保跨網域成功提交且不跑頁 -->
             <iframe 
                 name="form_submit_iframe" 
                 id="form_submit_iframe" 
                 style="display:none;" 
-                onload="if(isSubmitted){processSuccess();}">    
+                onload="processSuccess();">    
             </iframe>
             
-           <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" id="rsvpForm" onsubmit="isSubmitted=true;">
+            <!-- 綁定 target 到 iframe -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" id="rsvpForm" target="form_submit_iframe" onsubmit="isSubmitted=true;">
                <!-- Q1. 姓名 (ID: entry.2115634338) -->
                 <div class="form-group">
                     <label>您的姓名<span class="lang-en">NAME</span></label>
                     <input type="text" name="entry.2115634338" required placeholder="">
                 </div>
 
-                <!-- Q2. 關係選單 (ID: entry.135475866) 下拉純中文 -->
+                <!-- Q2. 關係選單 (ID: entry.135475866) -->
                 <div class="form-group">
                     <label>您是哪一方的親友呢？<span class="lang-en">RELATIONSHIP</span></label>
                     <select name="entry.135475866" required>
@@ -546,17 +547,17 @@
                     <!-- Q4. 出席人數 (ID: entry.1623138171) -->
                     <div class="form-group">
                         <label>請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
-                    <input type="text" name="entry.1623138171" placeholder="例如：2">
+                        <input type="text" name="entry.1623138171" placeholder="例如：2">
                     </div>
 
                     <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
                     <div class="form-group">
                         <label>若需要電子喜帖請留下email<span class="lang-en">DIGITAL INVITATION</span></label>
-                    <input type="text" name="entry.1126822723" placeholder="example@gmail.com">
+                        <input type="text" name="entry.1126822723" placeholder="example@gmail.com">
                     </div>
                 </div>
 
-                <!-- 修正欄位：想對新人說的話 (ID: entry.2038117092) 絕無預填文字 -->
+                <!-- 想對新人說的話 (ID: entry.2038117092) -->
                 <div class="form-group">
                     <label>溫馨祝福<span class="lang-en">MESSAGE TO NEWLYWEDS</span></label>
                     <textarea name="entry.2038117092" placeholder=""></textarea>
@@ -575,6 +576,16 @@
 
     <script>
         var isSubmitted = false;
+
+        // 成功發送後的處理邏輯
+        function processSuccess() {
+            if (isSubmitted) {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('success-wrapper').style.display = 'block';
+                // 滾動回表單頂部，方便看見成功訊息
+                document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
         // 2. 倒數計時器邏輯（倒數至 2026年12月5日 14:00）
         const weddingTimestamp = new Date("December 5, 2026 14:00:00").getTime();
@@ -617,55 +628,17 @@
             });
         });
 
-// 6. 智能表單邏輯控制 (保持不變)
-const attendanceSelector = document.getElementById('attendanceSelector');
-const conditionalGroup = document.getElementById('attendance-conditional');
+        // 6. 智能表單邏輯控制
+        const attendanceSelector = document.getElementById('attendanceSelector');
+        const conditionalGroup = document.getElementById('attendance-conditional');
 
-attendanceSelector.addEventListener('change', function() {
-    if (this.value === '❤️期待出席，準時到場！') {
-        conditionalGroup.classList.add('show');
-    } else {
-        conditionalGroup.classList.remove('show');
-    }
-});
-
-// 5. 改用 Fetch API 提交至 Google 表單 (取代原本的 iframe 邏輯)
-document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // 阻止瀏覽器預設的跳頁提交
-
-    const form = this;
-    const formData = new FormData(form);
-    
-    // Google 表單的提交網址
-    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse";
-
-    // 使用 URLSearchParams 轉換資料格式，確保 Google 能正確解析
-    const searchParams = new URLSearchParams();
-    for (const pair of formData.entries()) {
-        searchParams.append(pair[0], pair[1]);
-    }
-
-    // 發送請求 (使用 no-cors 模式繞過跨網域限制)
-    fetch(googleFormUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: searchParams.toString()
-    })
-    .then(() => {
-        // 成功送出後的網頁視覺處理
-        form.style.display = 'none';
-        document.getElementById('success-wrapper').style.display = 'block';
-    })
-    .catch((error) => {
-        console.error("提交失敗:", error);
-        alert("提交遇到一點問題，請重試或直接聯絡新人，謝謝您！");
-    });
-});
+        attendanceSelector.addEventListener('change', function() {
+            if (this.value === '❤️期待出席，準時到場！') {
+                conditionalGroup.classList.add('show');
+            } else {
+                conditionalGroup.classList.remove('show');
+            }
+        });
     </script>
-
-    
 </body>
 </html>
