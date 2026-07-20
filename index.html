@@ -791,678 +791,338 @@
             outline: none;
 
             border-color: var(--primary);
-
             box-shadow: 0 0 0 3px rgba(136, 112, 185, 0.15);
-
         }
-
-
 
         /* 紅色備註樣式 */
-
         .form-note {
-
             color: #ef8893;  /* 紅色備註 新色彩粉紅文字 */
-
             font-size: 0.95rem;
-
             font-weight: bold; /* 加粗 */
-
             font-family: "Microsoft JhengHei", sans-serif; /* 改用微軟正黑體 */
-
             text-align: center;
-
             margin-top: 10px;
-
             margin-bottom: 10px;
-
             letter-spacing: 0.1em;
-
         }
-
-
 
         button.btn-submit {
-
             background: var(--primary);
-
             color: #fff;
-
             border: none;
-
             padding: 16px;
-
             font-size: 1rem;
-
             font-family: inherit;
-
             font-weight: 500;
-
             border-radius: 30px;
-
             cursor: pointer;
-
             width: 100%;
-
             letter-spacing: 0.2em;
-
             box-shadow: 0 6px 20px rgba(136, 112, 185, 0.25);
-
             transition: background 0.3s, transform 0.2s;
-
             margin-top: 15px;
-
         }
-
-
 
         button.btn-submit:hover {
-
             background: var(--primary-hover); /* 改用調和後的懸停色 */
-
             transform: translateY(-1px);
-
         }
-
-
 
         #success-wrapper {
-
             display: none;
-
             color: #2e7d32; /* 更優雅穩重的綠色 */
-
             font-weight: 500;
-
             padding: 30px 20px;
-
             background: rgba(46, 125, 50, 0.06);
-
             border-radius: 12px;
-
             margin-top: 20px;
-
             text-align: center;
-
         }
-
-
 
         /* RWD 響應式網頁微調 */
-
         @media (max-width: 600px) {
-
             header h1 { font-size: 2.6rem; }
-
             header h2 { font-size: 1.1rem; letter-spacing: 0.15em; }
-
             header p.slogan { font-size: 0.95rem; letter-spacing: 0.2em; }
-
             .v-card { padding: 45px 22px; }
-
             .time-card { min-width: 46%; }
-
             nav a { margin: 0 10px; font-size: 0.85rem; }
-
         }
-
     </style>
-
 </head>
-
 <body>
 
-
-
     <!-- 1. 毛玻璃固定導航列 -->
-
     <nav>
-
         <a href="#about">關於我們</a>
-
         <a href="#details">婚禮詳情</a>
-
         <a href="#rsvp">出席回函</a>
-
     </nav>
 
-
-
     <!-- 3. 全螢幕封面背景 -->
-
     <header>
-
         <h1><span class="en">Robert & Abby</span></h1>
-
         <h2>魯承漢 & 耿玠瑋</h2>
-
         <div class="slogan-container">
-
             <p class="slogan rainbow-text">我們愛因神先愛我們</p>
-
             <p class="slogan-sub">1 John 4:19</p>
-
-        </div>
-
-        
+        </div>        
 
         <!-- 2. 計時器視覺（白色微光卡片） -->
-
         <div class="countdown-container" id="countdown-box">
-
             <div class="time-card">
-
                 <div class="time-num" id="t-days">00</div>
-
                 <div class="time-divider"></div>
-
                 <div class="time-label">DAYS</div>
-
             </div>
-
             <div class="time-card">
-
                 <div class="time-num" id="t-hours">00</div>
-
                 <div class="time-divider"></div>
-
                 <div class="time-label">HRS</div>
-
             </div>
-
             <div class="time-card">
-
                 <div class="time-num" id="t-minutes">00</div>
-
                 <div class="time-divider"></div>
-
                 <div class="time-label">MINS</div>
-
             </div>
-
             <div class="time-card">
-
                 <div class="time-num" id="t-seconds">00</div>
-
                 <div class="time-divider"></div>
-
                 <div class="time-label">SECS</div>
-
             </div>
-
         </div>
-
     </header>
 
-
-
     <!-- 垂直資訊排版 V-Card 容器 -->
-
     <div class="wrapper">
-
         
-
         <!-- 關於我們 Card -->
-
         <section id="about" class="v-card">
-
             <h3 class="section-title">關於我們 <span class="en">Our Story</span></h3>
-
             <p style="font-size: 1.05rem; color: #555; font-weight: 300;">
-
                 誠摯邀請您前來參與我們的婚禮，<br>
-
                 在眾人與神的見證與祝福中，一同分享這份喜悅，<br>
-
                 攜手邁向恩典的新一頁。
-
             </p>
-
         </section>
-
-
 
         <!-- 婚禮詳情 Card -->
-
         <section id="details" class="v-card">
-
-            <h3 class="section-title">婚禮詳情 <span class="en">Details</span></h3>
-
-            
-
+            <h3 class="section-title">婚禮詳情 <span class="en">Details</span></h3>           
             <div class="details-box">
-
                 <span class="details-label">婚禮日期 DATE</span>
-
                 <div class="details-content"><strong>2026 年 12 月 5 日 (星期六)</strong></div>
-
             </div>
 
-
-
             <div class="details-box">
-
                 <span class="details-label">婚禮時間 TIME</span>
-
                 <div class="details-content"> 14:00 準時開始 </div>
-
             </div>
-
-
 
             <div class="details-box">
-
                 <span class="details-label">婚禮地點 VENUE</span>
-
                 <div class="details-content"><strong class="no-wrap">中華基督教信義會信義堂</strong></div>
-
                 <div class="details-content" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
-
                     <span class="no-wrap">新竹市東區</span><span class="no-wrap">振興里南大路430號</span>
-
                 </div>
-
             </div>
-
-
 
             <!-- 8. 交通指引摺疊面板 (Accordion) -->
-
             <div class="accordion">
-
                 <div class="accordion-title">— 交通指引 —</div>
-
                 
-
                 <div class="accordion-item">
-
                     <div class="accordion-header">自行開車前往</div>
-
                     <div class="accordion-content">
-
                         <div class="accordion-body">
-
                             由國道1號下<span class="no-wrap">「新竹交流道」</span>後，往新竹市區方向行駛。沿光復路前進約3公里後左轉南大路，直行約1公里過西大路口後，即可看見位於右側的信義堂。<br><br>
-
                             <strong>停車建議：</strong>教堂內僅可停放機車。由於周邊路邊車位較少，開車前往的親友，建議利用鄰近的<span class="no-wrap">「西大路立體停車場」</span>，停妥後步行約 6 分鐘即可抵達信義堂。
-
                         </div>
-
                     </div>
-
                 </div>
-
-
 
                 <div class="accordion-item">
-
                     <div class="accordion-header">大眾運輸工具</div>
-
                     <div class="accordion-content">
-
                         <div class="accordion-body">
-
                             搭乘高鐵至<span class="no-wrap">「高鐵新竹站」</span>下車，依指標步行至隔壁的<span class="no-wrap">「台鐵六家車站」</span>，轉乘台鐵區間車前往<span class="no-wrap">「新竹火車站」</span>下車。<br><br>
-
                             搭乘台鐵至<span class="no-wrap">「新竹火車站」</span>下車。<br><br>
-
                             搭乘國道客運抵達<span class="no-wrap">「新竹轉運站」</span>下車。<br><br>
-
                             <strong>步行指引：</strong>請由<span class="no-wrap">「新竹火車站」</span>後站(新竹轉運站)出站，右轉沿南大路直行，約 12 分鐘即可抵達信義堂。
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
-
 
 
         <!-- 出席回函 Card -->
-
         <section id="rsvp" class="v-card">
-
-            <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>
-
-            
+            <h3 class="section-title">出席回函 <span class="en">RSVP</span></h3>            
 
             <!-- 5. 隱藏式 Iframe 提交技術 -->
-
             <iframe 
-
                 name="form_submit_iframe" 
-
                 id="form_submit_iframe" 
-
                 style="display:none;" 
-
                 onload="processSuccess();">    
-
-            </iframe>
-
-            
+            </iframe>            
 
             <!-- 綁定 target 到 iframe -->
-
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSfvigyivI-BlvKFk8cSGR3V0Jbaiv9DBY6tFz-h2XZRGAc0aA/formResponse" method="POST" id="rsvpForm" target="form_submit_iframe" onsubmit="isSubmitted=true;">
-
                 
-
                <!-- Q1. 姓名 (ID: entry.2115634338) -->
-
                 <div class="form-group">
-
                     <label for="input-name">您的姓名<span class="lang-en">NAME</span></label>
-
                     <input type="text" id="input-name" name="entry.2115634338" required placeholder="請輸入姓名">
-
                 </div>
-
-
 
                 <!-- Q2. 關係選單 (ID: entry.135475866) -->
-
                 <div class="form-group">
-
                     <label for="select-relationship">您是哪一方的親友呢？<span class="lang-en">RELATIONSHIP</span></label>
-
                     <select id="select-relationship" name="entry.135475866" required>
-
                         <option value="" disabled selected hidden>請選擇您的親友關係</option>
-
                         <option value="男方親戚">男方親戚</option>
-
                         <option value="男方朋友、同學">男方朋友、同學</option>
-
                         <option value="男方同事">男方同事</option>
-
                         <option value="女方親戚">女方親戚</option>
-
                         <option value="女方朋友、同學">女方朋友、同學</option>
-
                         <option value="女方同事">女方同事</option>
-
                         <option value="新竹信義堂">新竹信義堂</option>
-
                         <option value="鳳山基督堂">鳳山基督堂</option>
-
                         <option value="其他">其他</option>
-
                     </select>
-
                 </div>
-
-
 
                 <!-- Q3. 是否出席 (ID: entry.610958106) -->
-
                 <div class="form-group">
-
                     <label for="attendanceSelector">請問您當天是否能出席呢？<span class="lang-en">ATTENDANCE</span></label>
-
                     <select name="entry.610958106" id="attendanceSelector" required>
-
                         <option value="" disabled selected hidden>請選擇出席狀態</option>
-
                         <option value="❤️期待出席，準時到場！">❤️期待出席，準時到場！</option>
-
                         <option value="🌸遺憾無法前往，祝福你們！">🌸遺憾無法前往，祝福你們！</option>
-
                     </select>
-
                 </div>
 
-
-
-                <!-- 6. 智能表單邏輯控制區塊 (來：Q4 與 Q5) -->
-
+                <!-- 6. 智能表單邏輯控制區塊 -->
                 <div id="attendance-conditional" class="conditional-group">
 
                     <!-- Q4. 出席人數 (ID: entry.1623138171) -->
-
                     <div class="form-group">
-
                         <label for="input-guests">請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
-
                         <input type="text" id="input-guests" name="entry.1623138171" placeholder="例如：2">
-
                     </div>
-
-
 
                     <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
-
                     <div class="form-group">
-
                         <label for="input-email">若需要電子喜帖請留下email<span class="lang-en">DIGITAL INVITATION</span></label>
-
                         <input type="email" id="input-email" name="entry.1126822723" placeholder="example@gmail.com">
-
                     </div>
-
                 </div>
-
-
 
                 <!-- 想對新人說的話 (ID: entry.2038117092) -->
-
                 <div class="form-group">
-
                     <label for="input-message">溫馨祝福<span class="lang-en">MESSAGE TO NEWLYWEDS</span></label>
-
                     <textarea id="input-message" name="entry.2038117092" placeholder="寫些祝福的話給新人吧..."></textarea>
-
                 </div>
 
-
-
-                <!-- 🔴 新增：傳送按鈕上方的紅色備註 -->
-
-                <div class="form-note">我們的婚禮僅舉辦溫馨的證婚儀式，<br>並婉謝禮金。<br>
-
-                    儀式後準備了簡單的茶點，<br>誠摯邀請您前來同樂。</div>
-
-
-
+                <!-- 🔴 新增：傳送按鈕上方的備註 -->
+                <div class="form-note">我們的婚禮僅舉辦溫馨的證婚儀式，<br>
+                    並婉謝禮金。<br>
+                    儀式後準備了簡單的茶點，<br>
+                    誠摯邀請您前來同樂。</div>
                 <button type="submit" class="btn-submit">傳送出席回函</button>
-
             </form>
 
-
-
             <div id="success-wrapper">
-
                 <h3>表單已成功傳送！</h3>
-
                 <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。❤️</p>
-
             </div>
-
         </section>
-
     </div>
 
-
-
-
-
+    
     <script>
-
         var isSubmitted = false;
-
         const rsvpForm = document.getElementById('rsvpForm');
-
         const submitBtn = rsvpForm.querySelector('.btn-submit');
 
-
-
         // 監聽表單提交事件，點擊後按鈕變更狀態
-
         rsvpForm.addEventListener('submit', function() {
-
         isSubmitted = true;
-
         submitBtn.innerText = "傳送中...";
-
         submitBtn.style.opacity = "0.7";
-
         submitBtn.style.pointerEvents = "none"; // 禁用點擊
-
         });
-
-        
-
+    
         // 成功發送後的處理邏輯
-
         function processSuccess() {
-
             if (isSubmitted) {
-
                 document.getElementById('rsvpForm').style.display = 'none';
-
                 document.getElementById('success-wrapper').style.display = 'block';
-
                 // 滾動回表單頂部，方便看見成功訊息
-
                 document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' });
-
             }
-
         }
 
-
-
         // 2. 倒數計時器邏輯（倒數至 2026年12月5日 14:00）
-
         const weddingTimestamp = new Date("December 5, 2026 14:00:00").getTime();
-
-
-
         function refreshTimer() {
-
             const currentMoment = new Date().getTime();
-
             const timeDiff = weddingTimestamp - currentMoment;
-
-
-
             if (timeDiff < 0) {
-
                 document.getElementById("countdown-box").innerHTML = "<p style='font-size:1.1rem; color:#fff; letter-spacing:0.1em; padding:10px;'>婚禮已幸福揭幕 🤍</p>";
-
                 clearInterval(timerInterval);
-
                 return;
-
             }
-
-
-
             const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
             const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
             const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-
             const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-
-
             document.getElementById("t-days").innerText = days.toString().padStart(2, '0');
-
             document.getElementById("t-hours").innerText = hours.toString().padStart(2, '0');
-
             document.getElementById("t-minutes").innerText = minutes.toString().padStart(2, '0');
-
             document.getElementById("t-seconds").innerText = seconds.toString().padStart(2, '0');
-
         }
 
         const timerInterval = setInterval(refreshTimer, 1000);
-
         refreshTimer();
 
-
-
         // 8. 交通指引 Accordion 控制
-
         document.querySelectorAll('.accordion-header').forEach(el => {
-
             el.addEventListener('click', () => {
-
                 const item = el.parentElement;
-
                 const panel = el.nextElementSibling;
-
                 
-
                 item.classList.toggle('active');
-
                 if (item.classList.contains('active')) {
-
                     panel.style.maxHeight = panel.scrollHeight + "px";
-
                 } else {
-
                     panel.style.maxHeight = "0";
-
                 }
-
             });
-
         });
-
-
 
         // 6. 智能表單邏輯控制（防呆、動態必填切換、數值自動重設）
-
         const attendanceSelector = document.getElementById('attendanceSelector');
-
         const conditionalGroup = document.getElementById('attendance-conditional');
-
         const guestsInput = document.getElementById('input-guests');
-
         const emailInput = document.getElementById('input-email');
 
-
-
         attendanceSelector.addEventListener('change', function() {
-
             if (this.value === '❤️期待出席，準時到場！') {
-
                 conditionalGroup.classList.add('show');
-
                 // 動態增加必填屬性
-
                 guestsInput.setAttribute('required', 'required');
-
             } else {
-
                 conditionalGroup.classList.remove('show');
-
                 // 移除必填屬性
-
                 guestsInput.removeAttribute('required');
-
                 // 自动排空已填寫的數值，防止把無效的資料傳給 Google 表單
-
                 guestsInput.value = '';
-
                 emailInput.value = '';
-
             }
-
         });
-
     </script>
-
 </body>
-
 </html>
-
