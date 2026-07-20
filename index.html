@@ -28,12 +28,12 @@
             --primary-hover: #5d4886; /* 深紫懸停色 */
             --secondary: #f6c0d1;     /* 春天粉紅 */
             --bg-cream: #eaf6fd;      /* 冰雪酪 */
-            --text-dark: #3a3a3a;
-            --text-muted: #7a7a7a;
-            --white-glow: rgba(255, 255, 255, 0.94);
-            --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 8px rgba(0, 0, 0, 0.02);
+            --text-dark: #4a4453;     /* 高質感炭紫灰 */
+            --text-muted: #8c8295;       /* 溫和次要灰 */
+            --white-glow: rgba(255, 255, 255, 0.85);
+            --soft-shadow: 0 10px 30px rgba(115, 93, 163, 0.06);
             --vcard-shadow: 0 20px 40px rgba(115, 93, 163, 0.08);
-            --danger-red: #ef8893;    /* 粉紅警示/備註色 */
+            --danger-red: #e06d79;       /* 柔和玫瑰紅 */
         }
 
         * {
@@ -48,7 +48,10 @@
 
         body {
             font-family: 'Zen Maru Gothic', "Microsoft JhengHei", sans-serif;
-            background-color: var(--bg-cream);
+            /*background-color: var(--bg-cream);/*
+            /* 結合冷藍、淡粉與乳白色的微光漸層 */
+            background: linear-gradient(135deg, #eaf6fd 0%, #fbf4f8 50%, #f0f7fc 100%);
+            background-attachment: fixed; /* 捲動時背景固定，質感極佳 */
             color: var(--text-dark);
             line-height: 1.8;
             letter-spacing: 0.06em;
@@ -191,14 +194,14 @@
         }
 
         .time-card {
-            background: var(--white-glow);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 12px;
             padding: 8px 10px;
-            box-shadow: var(--soft-shadow);
+            box-shadow: 0 8px 32px rgba(115, 93, 163, 0.08); /* 帶有主色紫色調的極淡陰影 */
             display: flex;
             align-items: center;
-            border: 1px solid rgba(115, 93, 163, 0.15);
-            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             min-width: 70px;
             justify-content: center;
         }
@@ -239,12 +242,15 @@
 
         .v-card {
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: 28px;
             padding: 50px 40px;
-            box-shadow: var(--vcard-shadow);
+            /* 雙層微陰影：一層擴散、一層立體 */
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.01),
+                0 20px 40px rgba(115, 93, 163, 0.06);       
             margin-bottom: 40px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(246, 192, 209, 0.3); /* 淡粉色微光邊框 */
         }
 
         .section-title {
