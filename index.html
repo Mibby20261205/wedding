@@ -23,773 +23,395 @@
             --vcard-shadow: 0 20px 40px rgba(212, 163, 115, 0.08);
             --danger-red: #ef8893;  /* 紅色備註 新色彩粉紅文字 */
         }
-
-        
+     
 
         * {
-
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
         }
-
-
 
         html {
-
             scroll-behavior: smooth;
-
         }
 
-
-
         body {
-
             font-family: 'Noto Serif TC', serif;
-
             background-color: var(--bg-cream);
-
             color: var(--text-dark);
-
             line-height: 1.8;
-
             letter-spacing: 0.06em;
-
         }
 
 
 
         .en {
-
             font-family: 'Cormorant Garamond', serif;
-
             font-style: italic;
-
         }
-
 
 
         /* 手機版視覺優化：地址與關鍵地點名稱絕對不可以自動斷行跑版 */
-
         .no-wrap {
-
             white-space: nowrap !important;
-
             display: inline-block;
-
         }
-
-
 
         /* 1. 頂端固定毛玻璃質感導航列 */
-
         nav {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             z-index: 1000;
-
             background: rgba(253, 251, 247, 0.75);
-
             backdrop-filter: blur(12px);
-
             -webkit-backdrop-filter: blur(12px);
-
             border-bottom: 1px solid rgba(212, 163, 115, 0.15);
-
             display: flex;
-
             justify-content: center;
-
             padding: 18px 0;
-
         }
-
-
 
         nav a {
-
             color: var(--text-dark);
-
             text-decoration: none;
-
             margin: 0 18px;
-
             font-size: 0.9rem;
-
             font-weight: 500;
-
             letter-spacing: 0.1em;
-
             transition: color 0.3s ease;
-
         }
-
-
 
         nav a:hover {
-
             color: var(--primary);
-
         }
-
-
 
         /* 3. 首頁全螢幕封面背景 (加上 fallback 背景色，避免圖未載入時閃白) */
-
         header {
-
             height: 100vh;
-
             background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), 
-
                         #cfdbe3 url('https://i.postimg.cc/SshTXdT9/mibby.jpg') center/cover no-repeat;
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
             align-items: center;
-
             text-align: center;
-
             color: #fff;
-
             padding: 20px;
-
         }
-
-
 
         header h1 {
-
             font-family:'Cormorant Garamond', serif;
-
             font-size: 3.8rem;
-
             font-weight: 300;
-
             margin-bottom: 8px;
-
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-
         }
-
-
 
         header h2 {
-
             font-family: 'Klee One', cursive; /* 套用 Klee One */
-
             font-size: 2.3rem;
-
             font-weight: 600;
-
             margin-bottom: 50px;
-
             letter-spacing: 0.2em;
-
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
         }
-
-
 
         /* 經文外容器 */
-
         .slogan-container {
-
             margin-bottom: 100px; /* 與下方計時器的距離 */
-
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); 
-
         }
-
-
 
         /* 第一行主要經文 */
-
         .slogan {
-
             font-family: 'Noto Serif TC', cursive;
-
             font-size: 1.1rem;
-
             letter-spacing: 0.15em;
-
             margin-bottom: 4px; /* 微調間距 */
-
             font-weight: 400;
-
         }
-
-
 
         /* 🌈 專屬彩虹動畫字體樣式 */
-
         .rainbow-text {
-
             background: linear-gradient(
-
                 to right, 
-
                 #ff5f6d, #ffc371, #ffeb3b, #a8ff78, #78ffd6, #a18cd1, #fbc2eb, #ff5f6d
-
             );
-
             background-size: 200% auto;
-
             -webkit-background-clip: text;
-
             background-clip: text;
-
             -webkit-text-fill-color: transparent;
-
             text-fill-color: transparent;
-
             animation: rainbow-shift 6s linear infinite;
-
             display: inline-block;
-
             text-shadow: none !important; /* 避免文字陰影干擾彩虹色彩剪裁 */
-
         }
-
-
 
         /* 🌈 彩虹滾動動畫 */
-
         @keyframes rainbow-shift {
-
             0% {
-
                 background-position: 0% center;
-
             }
-
             100% {
-
                 background-position: 200% center;
-
             }
-
         }
-
-
 
         /* 第二行小字出處 */
-
         .slogan-sub {
-
             font-size: 0.7rem; /* 微調大小 */
-
             letter-spacing: 0.1em;
-
             opacity: 0.8; 
-
             font-weight: 300;
-
             margin: 0;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 15px; 
-
         }
-
-        
 
         /* 左右兩側的線條 */
-
         .slogan-sub::before,
-
         .slogan-sub::after {
-
             content: "";
-
             height: 1px; 
-
             width: 35px; 
-
             background-color: rgba(255, 255, 255, 0.6); 
-
             display: inline-block;
-
         }
-
-
 
         /* 2. 藝術感倒數計時器 */
-
         .countdown-container {
-
             display: flex;
-
             justify-content: center;
-
             gap: 14px;
-
             flex-wrap: wrap;
-
-            max-width: 300px;
-
+            max-width: 800px;
         }
-
-
 
         .time-card {
-
             background: var(--white-glow);
-
             border-radius: 12px;
-
             padding: 8px 8px;
-
             box-shadow: var(--soft-shadow);
-
             display: flex;
-
             align-items: center;
-
             border: 1px solid rgba(136, 112, 185, 0.25);
-
             backdrop-filter: blur(4px);
-
             min-width: 100px;
-
             justify-content: center;
-
         }
-
-
 
         .time-num {
-
             font-family: 'Cormorant Garamond', serif;
-
             font-size: 1.5rem;
-
             color: var(--primary);
-
             font-weight: 400;
-
             line-height: 1;
-
             padding-right: 14px;
-
             min-width: 50px;
-
             text-align: right;
-
         }
-
-
 
         .time-divider {
-
             width: 1px;
-
             height: 24px;
-
             background-color: rgba(212, 163, 115, 0.3);
-
         }
-
-
 
         .time-label {
-
             font-size: 0.5rem;
-
             color: var(--text-muted);
-
             padding-left: 8px;
-
             text-align: left;
-
             line-height: 1.3;
-
             letter-spacing: 0.05em;
-
             font-weight: 300;
-
         }
-
-
 
         /* 3. 垂直 V-Card 設計配置 */
-
         .wrapper {
-
             max-width: 760px;
-
             margin: 0 auto;
-
             padding: 60px 20px 100px;
-
         }
-
-
 
         .v-card {
-
             background: #ffffff;
-
             border-radius: 20px;
-
             padding: 60px 45px;
-
             box-shadow: var(--vcard-shadow);
-
             margin-bottom: 50px;
-
             text-align: center;
-
             border: 1px solid rgba(212, 163, 115, 0.12);
-
         }
-
-
 
         .section-title {
-
             color: var(--primary);
-
             font-size: 1.6rem;
-
             font-weight: 500;
-
             margin-bottom: 40px;
-
             letter-spacing: 0.15em;
-
         }
-
-
 
         .section-title::after {
-
             content: '';
-
             display: block;
-
             width: 35px;
-
             height: 1px;
-
             background: var(--secondary);
-
             margin: 12px auto 0;
-
         }
-
-
 
         .details-box {
-
             margin-bottom: 35px;
-
         }
-
 
 
         .details-label {
-
             display: inline-block;
-
             background: #fcebef;  /* 女人味粉紅背景 */
-
             color: #ef8893;       /* 新色彩粉紅文字 */
-
             font-size: 1.05rem;
-
             padding: 4px 16px;
-
             border-radius: 30px;
-
             margin-bottom: 12px;
-
             font-weight: 500;
-
             letter-spacing: 0.1em;
-
         }
-
-
 
         .details-content {
-
             font-size: 1.1rem;
-
             font-weight: bold; /* 加粗 */
-
             color: var(--text-dark);
-
         }
-
-
 
         /* 8. 交通指引：摺疊式面板 (Accordion) */
-
         .accordion {
-
             margin-top: 40px;
-
             text-align: left;
-
             border-top: 1px dashed rgba(136, 112, 185, 0.2);
-
             padding-top: 35px;
-
         }
-
-
 
         .accordion-title {
-
             font-size: 1rem;
-
             color: var(--primary);
-
             text-align: center;
-
             margin-bottom: 20px;
-
             letter-spacing: 0.1em;
-
         }
-
-
 
         .accordion-item {
-
             border: 1px solid rgba(0, 0, 0, 0.05);
-
             border-radius: 10px;
-
             margin-bottom: 12px;
-
             background: #fff;
-
             overflow: hidden;
-
         }
-
-
 
         .accordion-header {
-
             padding: 16px 20px;
-
             background: #faf8f5;
-
             cursor: pointer;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             font-size: 0.95rem;
-
             font-weight: 500;
-
             color: var(--text-dark);
-
             transition: background 0.3s;
-
         }
-
-
 
         .accordion-header:hover {
-
             background: #f4f0ea;
-
         }
-
-
 
         .accordion-header::after {
-
             content: '↓';
-
             font-family: serif;
-
             color: var(--primary);
-
             transition: transform 0.3s ease;
-
         }
-
-
 
         .accordion-item.active .accordion-header::after {
-
             transform: rotate(180deg);
-
         }
-
-
 
         .accordion-content {
-
             max-height: 0;
-
             overflow: hidden;
-
             transition: max-height 0.3s ease-out;
-
             background: #ffffff;
-
         }
-
-
 
         .accordion-body {
-
             padding: 20px;
-
             font-size: 0.9rem;
-
             color: #555;
-
             border-top: 1px solid rgba(0, 0, 0, 0.02);
-
             line-height: 1.7;
-
         }
-
 
 
         /* 4. 中英雙語欄位標籤 */
-
         .form-group {
-
             margin-bottom: 28px;
-
             text-align: left;
-
         }
-
-
 
         /* 6. 智能表單動態隱藏區塊 */
-
         .conditional-group {
-
             display: none;
-
             border-left: 2px solid var(--secondary);
-
             padding-left: 15px;
-
             margin-left: 2px;
-
         }
-
-
 
         .conditional-group.show {
-
             display: block;
-
         }
-
-
 
         label {
-
             display: block;
-
             margin-bottom: 8px;
-
             font-size: 0.95rem;
-
             font-weight: 500;
-
             color: var(--text-dark);
-
             cursor: pointer; /* 點擊 Label 可以觸發 Form 欄位焦點 */
-
         }
-
-
 
         label .lang-en {
-
             font-family: 'Cormorant Garamond', serif;
-
             font-style: italic;
-
             color: var(--text-muted);
-
             font-size: 0.85rem;
-
             margin-left: 6px;
-
             font-weight: 400;
-
         }
-
-
 
         input[type="text"], input[type="email"], select, textarea {
-
             width: 100%;
-
             padding: 14px 16px;
-
             border: 1px solid rgba(0, 0, 0, 0.12);
-
             border-radius: 8px;
-
             font-family: inherit;
-
             font-size: 0.95rem;
-
             color: var(--text-dark);
-
             background-color: #fff;
-
             transition: border-color 0.3s, box-shadow 0.3s;
-
         }
-
-
 
         textarea {
-
             resize: vertical;
-
             min-height: 110px;
-
             line-height: 1.6;
-
         }
 
-
-
         input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
-
             outline: none;
-
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(136, 112, 185, 0.15);
         }
