@@ -89,7 +89,8 @@
 
         /* 3. 首頁全螢幕封面背景 (加上 fallback 背景色，避免圖未載入時閃白) */
         header {
-            height: 100vh;
+            height: 100vh; /* 備用方案 */
+            height: 100dvh; /* 針對智慧型手機瀏覽器最佳化 */           
             background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), 
                         #cfdbe3 url('https://i.postimg.cc/SshTXdT9/mibby.jpg') center/cover no-repeat;
             display: flex;
@@ -636,7 +637,7 @@
                     <!-- Q4. 出席人數 (ID: entry.1623138171) -->
                     <div class="form-group">
                         <label for="input-guests">請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
-                        <input type="text" id="input-guests" name="entry.1623138171" placeholder="例如：2">
+                        <input type="text" id="input-guests" name="entry.1623138171" inputmode="numeric" pattern="[0-9]*" placeholder="例如：2">
                     </div>
 
                     <!-- Q5. 電子喜帖需求 (ID: entry.1126822723) -->
