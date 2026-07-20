@@ -287,25 +287,57 @@
             color: var(--text-dark);
         }
 
-        /* 新增：Google 地圖連結按鈕樣式 */
-        .map-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 12px;
+                /* google日曆 */
+        .action-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
             background-color: var(--primary);
             color: #ffffff;
             text-decoration: none;
             border-radius: 15px;
             font-size: 0.75rem;
             font-weight: 400;
+            border: none;
+            cursor: pointer;
             transition: background 0.3s, transform 0.2s;
             box-shadow: 0 2px 8px rgba(115, 93, 163, 0.2);
+            font-family: inherit;
         }
 
-        .map-btn:hover {
+        .action-btn:hover {
             background-color: var(--primary-hover);
             transform: translateY(-2px);
         }
+
+        .action-btn-secondary {
+            background-color: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .action-btn-secondary:hover {
+            background-color: #f7f5fa;
+        }
+
+
+
+
+
+
+
+
+        
+
 
         /* 交通指引摺疊面板 */
         .accordion {
