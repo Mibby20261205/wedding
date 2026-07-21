@@ -818,40 +818,44 @@
 
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-        // ==========================================
-        // 1. Nav 區塊滾動高亮 (Scrollspy 優化版)
-        // ==========================================
+// ==========================================
+// 1. Nav 區塊滾動高亮 (捲動中心點偵測版)
+// ==========================================
         const navLinks = document.querySelectorAll('nav a');
         const sections = document.querySelectorAll('section[id]');
-        
-        const navObserverOptions = {
-            root: null,
-            // 調整觀察區域與階梯式門檻，讓高亮切換更穩定不閃爍
-            rootMargin: '-20% 0px -45% 0px',
-            threshold: [0.3, 0.6]
-        };
 
-        let activeSectionId = '';
+        function updateActiveNav() {
+            let currentActiveId = '';
+            // 取得當前視窗縱向中心點的位置
+            const scrollCenter = window.scrollY + (window.innerHeight / 2);
 
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    activeSectionId = entry.target.getAttribute('id');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                // 當畫面中心點進入該 section 的範圍時，設定為當前啟用區塊
+                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
+                    currentActiveId = section.getAttribute('id');
                 }
             });
 
-            if (activeSectionId) {
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === `#${activeSectionId}`) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            }
-        }, navObserverOptions);
+            // 更新導覽列底線樣式
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentActiveId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
 
-        sections.forEach(section => navObserver.observe(section));
+        // 監聽滾動與調整視窗大小事件
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        window.addEventListener('resize', updateActiveNav, { passive: true });
+
+        // 初始化執行一次
+        updateActiveNav();
 
 
         // ==========================================
