@@ -274,11 +274,12 @@
             text-align: center;
             border: 1px solid rgba(246, 192, 209, 0.3); /* 淡粉色微光邊框 */
             scroll-margin-top: 65px; /* 新增：為固定導覽列留出上方空間 (Navbar 高度約 55px + 額外留白 10px) */
+            
             /* 新增：初始狀態（隱藏 + 往下偏移 30px） */
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-            transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+            transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;    
         }
 
