@@ -273,9 +273,19 @@
             margin-bottom: 40px;
             text-align: center;
             border: 1px solid rgba(246, 192, 209, 0.3); /* 淡粉色微光邊框 */
+            scroll-margin-top: 65px; /* 新增：為固定導覽列留出上方空間 (Navbar 高度約 55px + 額外留白 10px) */
+            /* 新增：初始狀態（隱藏 + 往下偏移 30px） */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+            transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;    
+        }
 
-            /* 新增：為固定導覽列留出上方空間 (Navbar 高度約 55px + 額外留白 5px) */
-            scroll-margin-top: 60px;
+        /* 進入視窗時觸發顯示 */
+        .v-card.fade-in {
+                opacity: 1;
+                transform: translateY(0);
         }
 
         .section-title {
@@ -806,40 +816,67 @@
     </div>
 
     <script>
-        // Nav 區塊滾動高亮 (Scrollspy)
-        document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
+        // ==========================================
+        // 1. Nav 區塊滾動高亮 (Scrollspy 優化版)
+        // ==========================================
         const navLinks = document.querySelectorAll('nav a');
         const sections = document.querySelectorAll('section[id]');
+        
+        const navObserverOptions = {
+            root: null,
+            // 調整觀察區域與階梯式門檻，讓高亮切換更穩定不閃爍
+            rootMargin: '-20% 0px -45% 0px',
+            threshold: [0.3, 0.6]
+        };
 
-        const observerOptions = {
-          root: null,
-            // 設定 trigger 線：當區塊進入畫面中央附近時觸發切換
-            rootMargin: '-30% 0px -50% 0px',
-            threshold: 0
-          };
+        let activeSectionId = '';
 
-          const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  const currentId = entry.target.getAttribute('id');
-                
-                  navLinks.forEach(link => {
-                      // 比對 href 是否對應當前進入視窗的 section id
-                      if (link.getAttribute('href') === `#${currentId}`) {
-                          link.classList.add('active');
-                      } else {
-                          link.classList.remove('active');
-                      }
-                  });
-              }
-          });
-        }, observerOptions);
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activeSectionId = entry.target.getAttribute('id');
+                }
+            });
 
-        sections.forEach(section => observer.observe(section));
+            if (activeSectionId) {
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${activeSectionId}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        }, navObserverOptions);
+
+        sections.forEach(section => navObserver.observe(section));
+
+
+        // ==========================================
+        // 2. Card 滾動淡入動畫 (Scroll Reveal)
+        // ==========================================
+        const cards = document.querySelectorAll('.v-card');
+
+        const cardObserverOptions = {
+            root: null,
+            rootMargin: '0px 0px -15% 0px', // 卡片露出畫面下緣約 15% 時觸發
+            threshold: 0.1
+        };
+
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 滑到卡片時加上淡入類別
+                    entry.target.classList.add('fade-in');
+                    // 動畫觸發後即停止觀察該卡片，節省手機效能
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, cardObserverOptions);
+
+        cards.forEach(card => cardObserver.observe(card));
     });
-      
-      
-      
       
         var isSubmitted = false;
         const rsvpForm = document.getElementById('rsvpForm');
