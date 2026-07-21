@@ -329,7 +329,7 @@
             color: var(--text-dark);
         }
 
-                /* google日曆&地圖 */
+            /* google日曆&地圖 */
         .action-btn-group {
             display: flex;
             justify-content: center;
@@ -603,6 +603,52 @@
             .time-card { min-width: 55px; padding: 6px 8px; }
             nav a { margin: 0 10px; font-size: 0.85rem; }
         }
+
+        /* Footer 簡潔風格樣式 */
+        footer {
+            text-align: center;
+            padding: 50px 20px 60px;
+            background: transparent;
+            color: var(--text-muted);
+    }
+
+        .footer-thanks {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+            opacity: 0.8;
+    }
+
+        .footer-credit {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dark);
+        }
+
+        .footer-credit .heart {
+            color: var(--secondary);
+            display: inline-block;
+            margin: 0 2px;
+            animation: pulse 1.8s infinite ease-in-out;
+        }
+
+        /* 愛心微微跳動動畫 */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }   
     </style>
 </head>
 <body>
@@ -816,6 +862,16 @@
         </section>
     </div>
 
+            <!-- Footer區塊 -->
+        <footer>
+            <p class="footer-thanks">Thank You</p>
+            <p class="footer-sub">Robert & Abby</p>
+            <div class="footer-credit">
+                Made with <span class="heart">♥</span>
+            </div>
+        </footer>
+
+    
     <script>
 document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
