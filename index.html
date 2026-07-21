@@ -275,9 +275,9 @@
             border: 1px solid rgba(246, 192, 209, 0.3); /* 淡粉色微光邊框 */
             scroll-margin-top: 45px; /* 新增：為固定導覽列留出上方空間 (Navbar 高度約 35px + 額外留白 10px) */
             
-            /* 新增：初始狀態（隱藏 + 往下偏移 30px） */
+            /* 新增：初始狀態（隱藏 + 往下偏移 20px） */
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
             transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;    
@@ -921,7 +921,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cardObserverOptions = {
             root: null,
-            rootMargin: '0px 0px -15% 0px', // 卡片露出畫面下緣約 15% 時觸發
+            rootMargin: '0px 0px -10% 0px', // 卡片露出畫面下緣約 10% 時觸發
             threshold: 0.1
         };
 
