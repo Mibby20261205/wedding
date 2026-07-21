@@ -545,7 +545,30 @@
             background: var(--primary-hover);
             transform: translateY(-2px);
         }
+        
+        /* 按鈕內載入動畫 Spinner 樣式 */
+            .btn-spinner {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3); /* 淡半透明外圈 */
+            border-top-color: #ffffff;                 /* 純白亮色缺口 */
+            border-radius: 50%;
+            vertical-align: -2px;
+            animation: rotate 0.8s linear infinite;
+        }
 
+        /* 旋轉 keyframes */
+            @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
         #success-wrapper {
             display: none;
             color: #2e7d32;
@@ -822,10 +845,16 @@
         // 監聽表單提交事件
         rsvpForm.addEventListener('submit', function() {
             isSubmitted = true;
-            submitBtn.innerText = "傳送中...";
-            submitBtn.style.opacity = "0.7";
+    
+        // 動態插入 Spinner 與改變文字
+        submitBtn.innerHTML = '<span class="btn-spinner"></span> 傳送中...';
+    
+        // 狀態設定 (禁止重複點擊)
+            submitBtn.style.opacity = "0.75";
             submitBtn.style.pointerEvents = "none";
         });
+
+        
     
         // 成功發送後的處理邏輯
         function processSuccess() {
