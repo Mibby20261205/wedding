@@ -49,9 +49,6 @@
         body {
             font-family: 'Zen Maru Gothic', "Microsoft JhengHei", sans-serif;
             background-color: var(--bg-cream);
-            /* 結合冷藍、淡粉與乳白色的微光漸層 */
-                /*background: linear-gradient(135deg, #eaf6fd 0%, #fbf4f8 50%, #f0f7fc 100%); /*
-                /*background-attachment: fixed; /* 捲動時背景固定，質感極佳 */
             color: var(--text-dark);
             line-height: 1.8;
             letter-spacing: 0.06em;
@@ -91,33 +88,33 @@
             font-weight: 500;
             letter-spacing: 0.1em;
             transition: color 0.3s ease;
-            position: relative; /* 新增：讓偽元素底線能以相對位置定位 */
-            padding-bottom: 2px; /* 新增：留給底線的空間 */
+            position: relative; 
+            padding-bottom: 2px;
         }
       
-            /* 懸停與選取狀態 */
+        /* 懸停與選取狀態 */
         nav a:hover,
         nav a.active {
-        color: var(--primary);
+            color: var(--primary);
         }
       
-            /* 底線效果 (選取時顯示) */
+        /* 底線效果 (選取時顯示) */
         nav a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-        border-radius: 2px;
-      }
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
 
         nav a.active::after {
-        width: 100%; /* active 時展開底線 */
-      }
+            width: 100%;
+        }
 
         /* 首頁全螢幕封面背景 */
         header {
@@ -266,27 +263,14 @@
             background: #ffffff;
             border-radius: 28px;
             padding: 50px 40px;
-            /* 雙層微陰影：一層擴散、一層立體 */
             box-shadow: 
                 0 4px 20px rgba(0, 0, 0, 0.01),
                 0 20px 40px rgba(115, 93, 163, 0.06);       
             margin-bottom: 40px;
             text-align: center;
-            border: 1px solid rgba(246, 192, 209, 0.3); /* 淡粉色微光邊框 */
-            scroll-margin-top: 45px; /* 新增：為固定導覽列留出上方空間 (Navbar 高度約 35px + 額外留白 10px) */
-            
-            /* 新增：初始狀態（隱藏 + 往下偏移 20px） */
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-            transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;    
-        }
-
-        /* 進入視窗時觸發顯示 */
-        .v-card.fade-in {
-                opacity: 1;
-                transform: translateY(0);
+            border: 1px solid rgba(246, 192, 209, 0.3);
+            scroll-margin-top: 45px;
+            opacity: 1
         }
 
         .section-title {
@@ -384,7 +368,6 @@
             stroke-linejoin: round;
         }
 
-            /* 婚禮詳情標籤內的 Icon (微調間距與顏色) */
         .details-label .icon {
             width: 1.1rem;
             height: 1.1rem;
@@ -392,7 +375,6 @@
             vertical-align: -2px;
         }
 
-            /* 按鈕內的 Icon */
         .action-btn .icon {
             width: 1rem;
             height: 1rem;
@@ -482,7 +464,7 @@
 
         .conditional-group.show {
             display: block;
-        }
+         }
 
         label {
             display: block;
@@ -561,7 +543,7 @@
         }
         
         /* 按鈕內載入動畫 Spinner 樣式 */
-            .btn-spinner {
+        .btn-spinner {
             display: inline-block;
             width: 1rem;
             height: 1rem;
@@ -573,14 +555,9 @@
             animation: rotate 0.8s linear infinite;
         }
 
-        /* 旋轉 keyframes */
-            @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+        @keyframes rotate {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
         }
         
         #success-wrapper {
@@ -644,13 +621,13 @@
             animation: pulse 1.8s infinite ease-in-out;
         }
 
-        /* 愛心微微跳動動畫 */
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.25); }
         }   
     </style>
 </head>
+
 <body>
 
     <!-- 1. 毛玻璃固定導航列 -->
@@ -829,7 +806,7 @@
 
                 <!-- 智能表單邏輯控制區塊 -->
                 <div id="attendance-conditional" class="conditional-group">
-                    <!-- Q4. 出席人數 (改為 number 類型防呆) -->
+                    <!-- Q4. 出席人數 -->
                     <div class="form-group">
                         <label for="input-guests">請問包含您本人，共幾位出席？<span class="lang-en">NUMBER OF GUESTS</span></label>
                         <input type="text" id="input-guests" name="entry.1623138171" inputmode="numeric" pattern="[0-9]*" placeholder="例如：2">
@@ -871,11 +848,10 @@
             </div>
         </footer>
 
-    
     <script>
 document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
-// 1. Nav 區塊滾動高亮 (捲動中心點偵測版)
+// Nav 區塊滾動高亮 (捲動中心點偵測版)
 // ==========================================
         const navLinks = document.querySelectorAll('nav a');
         const sections = document.querySelectorAll('section[id]');
@@ -912,50 +888,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 初始化執行一次
         updateActiveNav();
-
-
-        // ==========================================
-        // 2. Card 滾動淡入動畫 (Scroll Reveal)
-        // ==========================================
-        const cards = document.querySelectorAll('.v-card');
-
-        const cardObserverOptions = {
-            root: null,
-            rootMargin: '0px 0px -10% 0px', // 卡片露出畫面下緣約 10% 時觸發
-            threshold: 0.1
-        };
-
-        const cardObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // 滑到卡片時加上淡入類別
-                    entry.target.classList.add('fade-in');
-                    // 動畫觸發後即停止觀察該卡片，節省手機效能
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, cardObserverOptions);
-
-        cards.forEach(card => cardObserver.observe(card));
     });
-      
-        var isSubmitted = false;
-        const rsvpForm = document.getElementById('rsvpForm');
-        const submitBtn = rsvpForm.querySelector('.btn-submit');
+    
+    var isSubmitted = false;
+    const rsvpForm = document.getElementById('rsvpForm');
+    const submitBtn = rsvpForm.querySelector('.btn-submit');
 
-        // 監聽表單提交事件
-        rsvpForm.addEventListener('submit', function() {
-            isSubmitted = true;
+    // 監聽表單提交事件
+    rsvpForm.addEventListener('submit', function() {
+        isSubmitted = true;
     
         // 動態插入 Spinner 與改變文字
         submitBtn.innerHTML = '<span class="btn-spinner"></span> 傳送中...';
     
         // 狀態設定 (禁止重複點擊)
-            submitBtn.style.opacity = "0.75";
-            submitBtn.style.pointerEvents = "none";
-        });
-
-        
+        submitBtn.style.opacity = "0.75";
+        submitBtn.style.pointerEvents = "none";
+    });
     
         // 成功發送後的處理邏輯
         function processSuccess() {
