@@ -597,39 +597,6 @@
             nav a { margin: 0 10px; font-size: 0.85rem; }
         }
 
-        /* Footer 簡潔風格樣式 */
-        footer {
-            text-align: center;
-            padding: 10px 20px 40px;
-            background: transparent;
-            color: var(--text-muted);
-    }
-
-        .footer-thanks {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 6px;
-            letter-spacing: 0.05em;
-        }
-
-        .footer-sub {
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.12em;
-            margin-bottom: 20px;
-            opacity: 0.8;
-    }
-
-        .footer-credit {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
-            color: var(--text-dark);
-        }
-
         .footer-credit .heart {
             color: var(--secondary);
             display: inline-block;
@@ -641,47 +608,48 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.25); }
         } 
-      /* 花藝圖騰基礎樣式 */
-.floral-divider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 12px;
-}
+    
+        /* 花藝圖騰基礎樣式 */
+        .floral-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
-.floral-icon {
-    width: 68px;
-    height: auto;
-    fill: none;
-    stroke: var(--primary); /* 使用原有的深粉紫，也可替換為 #a89f91 香檳金 */
-    stroke-width: 1.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.85;
-    filter: drop-shadow(0 2px 4px rgba(115, 93, 163, 0.1));
-}
+        .floral-icon {
+            width: 68px;
+            height: auto;
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.85;
+            filter: drop-shadow(0 2px 4px rgba(115, 93, 163, 0.1));
+        }
 
-/* 自然微風搖曳動畫 (Sway Effect) */
-.sway-animation {
-    transform-origin: bottom center;
-    animation: gentleSway 6s ease-in-out infinite;
-}
+        /* 自然微風搖曳動畫 (Sway Effect) */
+        .sway-animation {
+            transform-origin: bottom center;
+            animation: gentleSway 6s ease-in-out infinite;
+        }
 
-/* 輕微上下浮動動畫 (Floating Effect) */
-.float-animation {
-    animation: gentleFloat 4s ease-in-out infinite;
-}
+        /* 輕微上下浮動動畫 (Floating Effect) */
+        .float-animation {
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
 
-@keyframes gentleSway {
-    0%, 100% { transform: rotate(0deg); }
-    33% { transform: rotate(2.5deg); }
-    66% { transform: rotate(-2deg); }
-}
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(0deg); }
+            33% { transform: rotate(2.5deg); }
+            66% { transform: rotate(-2deg); }
+        }
 
-@keyframes gentleFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
-}
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
     </style>
 </head>
 
@@ -733,19 +701,19 @@
         
         <!-- 關於我們 Card -->
         <section id="about" class="v-card">
-          <div class="floral-divider float-animation">
-        <svg class="floral-icon sway-animation" viewBox="0 0 100 40">
-            <path d="M 50 30 C 35 28, 20 22, 5 15" />
-            <path d="M 38 27 C 32 20, 28 15, 30 10 C 34 12, 36 18, 38 27 Z" fill="rgba(246, 192, 209, 0.3)" />
-            <path d="M 24 23 C 18 16, 14 12, 16 7 C 20 9, 22 15, 24 23 Z" fill="rgba(246, 192, 209, 0.3)" />
-            <path d="M 12 18 C 7 12, 3 8, 5 4 C 9 5, 11 11, 12 18 Z" fill="rgba(246, 192, 209, 0.3)" />
-            <path d="M 50 30 C 65 28, 80 22, 95 15" />
-            <path d="M 62 27 C 68 20, 72 15, 70 10 C 66 12, 64 18, 62 27 Z" fill="rgba(246, 192, 209, 0.3)" />
-            <path d="M 76 23 C 82 16, 86 12, 84 7 C 80 9, 78 15, 76 23 Z" fill="rgba(246, 192, 209, 0.3)" />
-            <path d="M 88 18 C 93 12, 97 8, 95 4 C 91 5, 89 11, 88 18 Z" fill="rgba(246, 192, 209, 0.3)" />
-            <circle cx="50" cy="30" r="1.5" fill="var(--primary)" />
-        </svg>
-    </div>
+            <div class="floral-divider float-animation">
+            <svg class="floral-icon sway-animation" viewBox="0 0 100 40">
+                <path d="M 50 30 C 35 28, 20 22, 5 15" />
+                <path d="M 38 27 C 32 20, 28 15, 30 10 C 34 12, 36 18, 38 27 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 24 23 C 18 16, 14 12, 16 7 C 20 9, 22 15, 24 23 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 12 18 C 7 12, 3 8, 5 4 C 9 5, 11 11, 12 18 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 50 30 C 65 28, 80 22, 95 15" />
+                <path d="M 62 27 C 68 20, 72 15, 70 10 C 66 12, 64 18, 62 27 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 76 23 C 82 16, 86 12, 84 7 C 80 9, 78 15, 76 23 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 88 18 C 93 12, 97 8, 95 4 C 91 5, 89 11, 88 18 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <circle cx="50" cy="30" r="1.5" fill="var(--primary)" />
+            </svg>
+            </div>
             <h3 class="section-title">關於我們 <span class="section-en">Our Story</span></h3>
             <p style="font-size: 1.05rem; color: #555; font-weight: 300;">
                 誠摯邀請您前來參與我們的婚禮，<br>
@@ -757,7 +725,20 @@
 
         <!-- 婚禮詳情 Card -->
         <section id="details" class="v-card">
-            <h3 class="section-title">婚禮詳情 <span class="section-en">Details</span></h3>            
+            <div class="floral-divider float-animation">
+            <svg class="floral-icon sway-animation" viewBox="0 0 100 40">
+                <path d="M 50 30 C 35 28, 20 22, 5 15" />
+                <path d="M 38 27 C 32 20, 28 15, 30 10 C 34 12, 36 18, 38 27 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 24 23 C 18 16, 14 12, 16 7 C 20 9, 22 15, 24 23 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 12 18 C 7 12, 3 8, 5 4 C 9 5, 11 11, 12 18 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 50 30 C 65 28, 80 22, 95 15" />
+                <path d="M 62 27 C 68 20, 72 15, 70 10 C 66 12, 64 18, 62 27 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 76 23 C 82 16, 86 12, 84 7 C 80 9, 78 15, 76 23 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 88 18 C 93 12, 97 8, 95 4 C 91 5, 89 11, 88 18 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <circle cx="50" cy="30" r="1.5" fill="var(--primary)" />
+            </svg>
+        </div>
+        <h3 class="section-title">婚禮詳情 <span class="section-en">Details</span></h3>            
             
         <!-- 日期 -->
             <div class="details-box">
@@ -829,7 +810,20 @@
 
         <!-- 出席回函 Card -->
         <section id="rsvp" class="v-card">
-            <h3 class="section-title">出席回函 <span class="section-en">RSVP</span></h3>            
+        <div class="floral-divider float-animation">
+            <svg class="floral-icon sway-animation" viewBox="0 0 100 40">
+                <path d="M 50 30 C 35 28, 20 22, 5 15" />
+                <path d="M 38 27 C 32 20, 28 15, 30 10 C 34 12, 36 18, 38 27 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 24 23 C 18 16, 14 12, 16 7 C 20 9, 22 15, 24 23 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 12 18 C 7 12, 3 8, 5 4 C 9 5, 11 11, 12 18 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 50 30 C 65 28, 80 22, 95 15" />
+                <path d="M 62 27 C 68 20, 72 15, 70 10 C 66 12, 64 18, 62 27 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 76 23 C 82 16, 86 12, 84 7 C 80 9, 78 15, 76 23 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <path d="M 88 18 C 93 12, 97 8, 95 4 C 91 5, 89 11, 88 18 Z" fill="rgba(246, 192, 209, 0.3)" />
+                <circle cx="50" cy="30" r="1.5" fill="var(--primary)" />
+            </svg>
+        </div>
+        <h3 class="section-title">出席回函 <span class="section-en">RSVP</span></h3>            
 
             <!-- 隱藏式 Iframe -->
             <iframe 
@@ -904,12 +898,11 @@
 
             <div id="success-wrapper">
                 <h3>表單已成功傳送！</h3>
-                <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。❤️</p>
+                <p style="margin-top: 10px; font-size: 0.95rem;">謝謝您的回覆，期待與您共同見證這份美好的祝福。Made with <span class="heart">♥</span></p>
             </div>
         </section>
     </div>
 
-            <!-- Footer區塊 -->
 <div class="floral-divider float-animation">
     <svg class="floral-icon sway-animation" viewBox="0 0 60 50">
         <!-- 主莖與花朵 -->
