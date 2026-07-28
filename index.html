@@ -514,54 +514,6 @@
             background-color: #faf9fb;
             transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
         }
-
-        
-/* 專門為 select 下拉選單打造的優化樣式（修正 SVG 編碼版） */
-        select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid rgba(115, 93, 163, 0.2);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            background-color: #fcfbfe; /* 帶有微紫的奶霜底色 */
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(115, 93, 163, 0.02);
-            
-            /* 行動裝置維持原生好點擊的介面 */
-            -webkit-appearance: menulist; 
-            appearance: menulist;
-        }
-
-        /* 電腦版：強制套用精緻的紫色小箭頭 */
-        @media screen and (min-width: 768px) {
-            select {
-                padding-right: 42px;
-                /* 使用 Base64 編碼的紫色箭頭，百分之百確保所有瀏覽器都能讀取 */
-                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3MzVkYTMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNiA5bDYgNiA2LTYiLz48L3N2Zz4=");
-                background-repeat: no-repeat;
-                background-position: right 14px center;
-                -webkit-appearance: none;
-                appearance: none;
-            }
-        }
-
-        /* 下拉選單滑鼠懸停與聚焦時的質感 */
-        select:hover {
-            border-color: rgba(115, 93, 163, 0.4);
-            background-color: #f7f4fc;
-        }
-
-        select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(115, 93, 163, 0.12);
-        }
-
-
         
         textarea {
             resize: vertical;
