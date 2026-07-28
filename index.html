@@ -533,6 +533,11 @@
             box-shadow: 0 2px 8px rgba(115, 93, 163, 0.02);
         }
 
+        /* 讓不同裝置都能正確顯示欄位與點擊 */
+            -webkit-appearance: menulist; /* 確保手機端能順暢叫出原生選單 */
+            appearance: menulist;
+        }
+        
         /* 電腦版或支援自訂外觀的螢幕：套用精緻的紫色小箭頭與內距 */
         @media screen and (min-width: 768px) {
             select {
