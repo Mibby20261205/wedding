@@ -526,10 +526,6 @@
             font-size: 0.95rem;
             color: var(--text-dark);
             background-color: #fcfbfe; /* 帶有微紫的奶霜底色 */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23735da3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            appearance: none; /* 移除系統預設箭頭 */
             -webkit-appearance: none;
             -moz-appearance: none;
             cursor: pointer;
@@ -537,22 +533,29 @@
             box-shadow: 0 2px 8px rgba(115, 93, 163, 0.02);
         }
 
-        /* 下拉選單滑鼠懸停與聚焦時的精緻感 */
+        /* 電腦版或支援自訂外觀的螢幕：套用精緻的紫色小箭頭與內距 */
+        @media screen and (min-width: 768px) {
+            select {
+                padding-right: 42px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23735da3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 14px center;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+        }
+        
+        /* 下拉選單滑鼠懸停時的質感 */
         select:hover {
             border-color: rgba(115, 93, 163, 0.4);
             background-color: #f7f4fc;
         }
 
-        input:focus, select:focus, textarea:focus {
+        select:focus {
             outline: none;
             border-color: var(--primary);
             background-color: #fff;
             box-shadow: 0 0 0 3px rgba(115, 93, 163, 0.12);
-        }
-
-        /* 讓預設隱藏的提示字（placeholder 效果）顏色較淡 */
-        select option:first-of-type {
-            color: var(--text-muted);
         }
 
         
